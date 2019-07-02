@@ -1,0 +1,31 @@
+{
+  "name": "sk-components",
+  "version": "0.0.1",
+  "description": "Smartkarma UI Kit",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smartkarma/sk-components.git"
+  },
+  "keywords": [
+    "reactjs",
+    "reactnative",
+    "smartkarmaui"
+  ],
+  "author": "Ibnu Prayogi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/smartkarma/sk-components/issues"
+  },
+  "homepage": "https://github.com/smartkarma/sk-components#readme",
+  "dependencies": {
+    "prop-types": "^15.7.2"
+  },
+  "devDependencies": {
+    "react": "^16.8.6",
+    "react-native": "^0.59.9"
+  }
+}
