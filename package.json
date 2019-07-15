@@ -22,9 +22,14 @@
   },
   "homepage": "https://github.com/smartkarma/sk-components#readme",
   "dependencies": {
-    "prop-types": "^15.7.2"
+    "lodash-es": "^4.17.11",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-native": "^0.59.9"
   },
-  "devDependencies": {
+  "peerDependencies": {
+    "lodash-es": "^4.17.11",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-native": "^0.59.9"
   }

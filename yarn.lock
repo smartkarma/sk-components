@@ -648,9 +648,9 @@
     to-fast-properties "^2.0.0"
 
 "@react-native-community/cli@^1.2.1":
-  version "1.9.11"
-  resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-1.9.11.tgz#b868b17201057b9cd16a3a20c30561176071f21a"
-  integrity sha512-VVu/tmTTzODfW2xlqIz0pZgeELG2ppPAIgbBEKLgHCO9DMxNZIKSqmei/JqkAi0gEipqQoP6YPAemHPd43lyrA==
+  version "1.9.12"
+  resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-1.9.12.tgz#6022eafdb23fac8ab2cbdd6bf9f00452c9b7b33b"
+  integrity sha512-EGu0QadFL7dqyNlVhkZzUO36YnbT9dn99VXmT9BT7I/GZfwFGOTLpHLX9YHcrO0XNhYXEU7LYSJ854KSUB3d9A==
   dependencies:
     chalk "^1.1.1"
     commander "^2.19.0"
@@ -2401,6 +2401,11 @@ locate-path@^3.0.0:
     p-locate "^3.0.0"
     path-exists "^3.0.0"
 
+lodash-es@^4.17.11:
+  version "4.17.11"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.11.tgz#145ab4a7ac5c5e52a3531fb4f310255a152b4be0"
+  integrity sha512-DHb1ub+rMjjrxqlB3H56/6MXtm1lSksDp2rA2cNWjG8mlDUYFhUj3Di2Zn5IwSU87xLv8tNIQ7sSwE/YOX/D/Q==
+
 lodash.pad@^4.1.0:
   version "4.5.1"
   resolved "https://registry.yarnpkg.com/lodash.pad/-/lodash.pad-4.5.1.tgz#4330949a833a7c8da22cc20f6a26c4d59debba70"
@@ -3454,9 +3459,9 @@ react-is@^16.8.1:
   integrity sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
 
 react-native@^0.59.9:
-  version "0.59.9"
-  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.59.9.tgz#c94ee4fa35121720c05235a2dd6cdd2784bf5177"
-  integrity sha512-/+8EgIZwFpYHyyJ7Zav7B6LHNrytwUQ+EKGT/QV7HSrgpf2Y5NZNeUYUHKiVKLYpBip1G32/LcAECQj37YRwGQ==
+  version "0.59.10"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.59.10.tgz#352f381e382f93a0403be499c9e384bf51c2591c"
+  integrity sha512-guB9YW+pBqS1dnfZ4ntzjINopiCUAbdmshU2wMWD1W32fRczLAopi/7Q2iHKP8LTCdxuYZV3fa9Mew5PSuANAw==
   dependencies:
     "@babel/runtime" "^7.0.0"
     "@react-native-community/cli" "^1.2.1"

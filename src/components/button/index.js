@@ -1,3 +1,3 @@
-import Button from './Button'
+import C from './Button'
 
-export default Button
+export default C
