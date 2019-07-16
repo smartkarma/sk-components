@@ -1,6 +1,6 @@
-import React from 'react';
-import {Animated, GestureResponderEvent} from 'react-native';
-import {PRIMARY, SECONDARY, SECONDARY_TINT} from '../../constants/colors';
+import React from "react";
+import { Animated, GestureResponderEvent } from "react-native";
+import { PRIMARY, SECONDARY, SECONDARY_TINT } from "../../constants/colors";
 
 export interface Props {
   componentId?: string;
@@ -14,13 +14,7 @@ export interface Props {
 interface State {
 }
 
-class Text extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-  }
-
-  animHoveringColorValue = new Animated.Value(0);
-
+export default class Text extends React.Component<Props, State> {
   static defaultProps = {
     color: SECONDARY,
     colorHover: PRIMARY,
@@ -30,17 +24,23 @@ class Text extends React.Component<Props, State> {
     onPress: null
   };
 
-  _onMouseEnter = () => {
+  animHoveringColorValue = new Animated.Value(0);
+
+  constructor(props: Props) {
+    super(props);
+  }
+
+  onMouseEnter = () => {
     Animated.timing(this.animHoveringColorValue, {
-      toValue: 1,
-      duration: 120
+      duration: 120,
+      toValue: 1
     }).start();
   };
 
-  _onMouseLeave = () => {
+  onMouseLeave = () => {
     Animated.timing(this.animHoveringColorValue, {
-      toValue: 0,
-      duration: 120
+      duration: 120,
+      toValue: 0
     }).start();
   };
 
@@ -58,20 +58,18 @@ class Text extends React.Component<Props, State> {
       outputRange: [disabled ? colorTint : color, colorHover]
     });
     return (
-       <Animated.Text
-          onPress={onPress}
-          onMouseEnter={this._onMouseEnter}
-          onMouseLeave={this._onMouseLeave}
-          style={[
-            {
-              color: hoveringColor
-            }
-          ]}
-       >
-         {children}
-       </Animated.Text>
+      <Animated.Text
+        onPress={onPress}
+        onMouseEnter={this.onMouseEnter}
+        onMouseLeave={this.onMouseLeave}
+        style={[
+          {
+            color: hoveringColor
+          }
+        ]}
+      >
+        {children}
+      </Animated.Text>
     );
   }
 }
-
-export default Text;

@@ -1,8 +1,8 @@
-import React from 'react';
-import {noop} from 'lodash-es';
-import {Text, StyleSheet, TouchableOpacity, GestureResponderEvent} from 'react-native';
-import {GREY_GREY, INACTIVE_GREY, JADE, WHITE} from '../../constants/colors';
-import {TOUCH_OPACITY} from '../../constants/numbers';
+import { noop } from "lodash-es";
+import React from "react";
+import { GestureResponderEvent, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { GREY_GREY, INACTIVE_GREY, JADE, WHITE } from "../../constants/colors";
+import { TOUCH_OPACITY } from "../../constants/numbers";
 
 export interface Props {
   componentId?: string;
@@ -17,14 +17,14 @@ export interface Props {
 interface State {
 }
 
-class Button extends React.Component<Props, State> {
+export default class Button extends React.Component<Props, State> {
   static defaultProps: Props = {
-    title: 'Press me!',
-    onPress: noop,
-    disabled: false,
     active: false,
     bordered: false,
-    shadowed: false
+    disabled: false,
+    onPress: noop,
+    shadowed: false,
+    title: "Press me!"
   };
 
   render() {
@@ -35,17 +35,17 @@ class Button extends React.Component<Props, State> {
       title
     } = this.props;
     return (
-       <TouchableOpacity
-          activeOpacity={TOUCH_OPACITY}
-          disabled={disabled}
-          onPress={onPress}
-          style={[
-            styles.container,
-            {backgroundColor: disabled ? INACTIVE_GREY : active ? JADE : GREY_GREY}
-          ]}
-       >
-         <Text style={{color: WHITE}}>{title}</Text>
-       </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={TOUCH_OPACITY}
+        disabled={disabled}
+        onPress={onPress}
+        style={[
+          styles.container,
+          { backgroundColor: disabled ? INACTIVE_GREY : active ? JADE : GREY_GREY }
+        ]}
+      >
+        <Text style={{ color: WHITE }}>{title}</Text>
+      </TouchableOpacity>
     );
   }
 }
@@ -53,9 +53,7 @@ class Button extends React.Component<Props, State> {
 const styles = StyleSheet.create({
   container: {
     borderRadius: 2,
-    padding: 5,
-    margin: 5
+    margin: 5,
+    padding: 5
   }
 });
-
-export default Button;
