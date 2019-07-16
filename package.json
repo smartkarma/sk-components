@@ -2,17 +2,29 @@
   "name": "sk-components",
   "version": "0.0.1",
   "description": "Smartkarma UI Kit",
-  "main": "./src/index.js",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "scripts": {
-    "test": "jest"
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "test": "jest --config jestconfig.json --passWithNoTests",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/smartkarma/sk-components.git"
   },
   "keywords": [
+    "react",
     "reactjs",
     "reactnative",
+    "node",
+    "javascript",
     "smartkarmaui"
   ],
   "author": "Ibnu Prayogi",
@@ -21,16 +33,39 @@
     "url": "https://github.com/smartkarma/sk-components/issues"
   },
   "homepage": "https://github.com/smartkarma/sk-components#readme",
+  "files": [
+    "build/**/*"
+  ],
+  "devDependencies": {
+    "@types/jest": "^24.0.15",
+    "@types/react": "^16.8.23",
+    "@types/react-native": "^0.60.0",
+    "husky": "^3.0.0",
+    "jest": "^24.8.0",
+    "prettier": "^1.18.2",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.5.3"
+  },
   "dependencies": {
-    "lodash-es": "^4.17.11",
-    "prop-types": "^15.7.2",
+    "@types/lodash-es": "^4.17.3",
+    "@types/react": "^16.8.23",
+    "@types/react-native": "^0.60.0",
+    "lodash-es": "^4.17.14",
     "react": "^16.8.6",
     "react-native": "^0.59.9"
   },
   "peerDependencies": {
-    "lodash-es": "^4.17.11",
-    "prop-types": "^15.7.2",
+    "@types/react": "^16.8.23",
+    "@types/react-native": "^0.60.0",
     "react": "^16.8.6",
-    "react-native": "^0.59.9"
+    "react-native": "^0.59.9",
+    "typescript": "^3.5.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prepublishOnly"
+    }
   }
 }
