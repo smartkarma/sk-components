@@ -1,48 +1,37 @@
-import React from "react";
-import { Animated, GestureResponderEvent } from "react-native";
-import { PRIMARY, SECONDARY, SECONDARY_TINT } from "../../constants/colors";
+import React from 'react';
+import { Animated } from 'react-native';
+import { Colors, Sizes } from '../../constants';
+import { HOVERING_DURATION } from '../../constants/numbers';
+import * as Types from './type';
 
-export interface Props {
-  componentId?: string;
-  color: string;
-  colorHover: string;
-  colorTint: string;
-  disabled: boolean;
-  onPress: (e: GestureResponderEvent) => void
-}
-
-interface State {
-}
-
-export default class Text extends React.Component<Props, State> {
-  static defaultProps = {
-    color: SECONDARY,
-    colorHover: PRIMARY,
-    colorTint: SECONDARY_TINT,
+export default class Text extends React.Component<Types.Props, Types.State> {
+  static defaultProps: Types.Props = {
+    color: Colors.SECONDARY,
+    colorHover: Colors.PRIMARY,
+    colorTint: Colors.SECONDARY_TINT,
     disabled: false,
-    idEl: null,
-    onPress: null
+    hoverable: false,
+    size: Sizes.TypesEnum.SMALL,
+    tint: false
   };
 
   animHoveringColorValue = new Animated.Value(0);
 
-  constructor(props: Props) {
-    super(props);
-  }
-
   onMouseEnter = () => {
     Animated.timing(this.animHoveringColorValue, {
-      duration: 120,
+      duration: HOVERING_DURATION,
       toValue: 1
     }).start();
   };
 
   onMouseLeave = () => {
     Animated.timing(this.animHoveringColorValue, {
-      duration: 120,
+      duration: HOVERING_DURATION,
       toValue: 0
     }).start();
   };
+
+  getColor = () => this.props.tint ? this.props.colorTint : this.props.color;
 
   render() {
     const {
@@ -51,11 +40,15 @@ export default class Text extends React.Component<Props, State> {
       colorHover,
       colorTint,
       disabled,
-      onPress
+      hoverable,
+      onPress,
+      style,
+      tint
     } = this.props;
+    const textColor = tint ? colorTint : color;
     const hoveringColor = this.animHoveringColorValue.interpolate({
       inputRange: [0, 1],
-      outputRange: [disabled ? colorTint : color, colorHover]
+      outputRange: [textColor, colorHover]
     });
     return (
       <Animated.Text
@@ -63,9 +56,8 @@ export default class Text extends React.Component<Props, State> {
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
         style={[
-          {
-            color: hoveringColor
-          }
+          { color: disabled ? Colors.INACTIVE_GREY : hoverable ? hoveringColor : textColor },
+          style
         ]}
       >
         {children}

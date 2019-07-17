@@ -1,11 +1,10 @@
 import Button from './components/button';
 import Text from './components/text';
-import * as Colors from './constants/colors';
-import * as Numbers from './constants/numbers';
+import {Colors, Numbers} from './constants';
 
 export {
   Button,
-  Text,
   Colors,
-  Numbers
+  Numbers,
+  Text
 };

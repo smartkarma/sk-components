@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 export interface Props {
   componentId: string
@@ -13,9 +13,9 @@ export default class Blueprint extends React.Component<Props, State> {
 
   render() {
     return (
-       <View style={[styles.container]}>
+      <View style={[styles.container]}>
 
-       </View>
+      </View>
     );
   }
 }

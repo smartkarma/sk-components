@@ -1,3 +1,4 @@
 export const
-	TOUCH_OPACITY = 0.6,
-	HOVER_OPACITY = 0.9;
+  HOVER_OPACITY: number = 0.9,
+  HOVERING_DURATION: number = 200,
+  TOUCH_OPACITY: number = 0.6;

@@ -1,3 +1,3 @@
-import C from './Text'
+import C from './Text';
 
-export default C
+export default C;

@@ -1,57 +1,47 @@
-import { noop } from "lodash-es";
-import React from "react";
-import { GestureResponderEvent, StyleSheet, Text, TouchableOpacity } from "react-native";
-import { GREY_GREY, INACTIVE_GREY, JADE, WHITE } from "../../constants/colors";
-import { TOUCH_OPACITY } from "../../constants/numbers";
+import { noop } from 'lodash-es';
+import React from 'react';
+import { StyleSheet, TouchableOpacity } from 'react-native';
+import { Colors, Numbers, Sizes } from '../../constants';
+import Text from '../text';
+import * as Types from './type';
 
-export interface Props {
-  componentId?: string;
-  active: boolean;
-  bordered: boolean;
-  disabled: boolean;
-  onPress: (event: GestureResponderEvent) => void;
-  shadowed: boolean;
-  title: string;
-}
-
-interface State {
-}
-
-export default class Button extends React.Component<Props, State> {
-  static defaultProps: Props = {
-    active: false,
-    bordered: false,
+export default class Button extends React.Component<Types.Props, Types.State> {
+  static defaultProps: Types.Props = {
+    color: Colors.JADE,
     disabled: false,
     onPress: noop,
-    shadowed: false,
-    title: "Press me!"
+    size: Sizes.TypesEnum.SMALL,
+    text: 'Press me!',
+    textColor: Colors.WHITE,
+    type: Types.ButtonTypesEnum.NORMAL
   };
 
   render() {
     const {
-      active,
+      color,
       disabled,
       onPress,
-      title
+      text,
+      textColor
     } = this.props;
     return (
       <TouchableOpacity
-        activeOpacity={TOUCH_OPACITY}
+        activeOpacity={Numbers.TOUCH_OPACITY}
         disabled={disabled}
         onPress={onPress}
         style={[
-          styles.container,
-          { backgroundColor: disabled ? INACTIVE_GREY : active ? JADE : GREY_GREY }
+          styles.buttonContainer,
+          { backgroundColor: disabled ? Colors.INACTIVE_GREY : color }
         ]}
       >
-        <Text style={{ color: WHITE }}>{title}</Text>
+        <Text color={textColor}>{text}</Text>
       </TouchableOpacity>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
+  buttonContainer: {
     borderRadius: 2,
     margin: 5,
     padding: 5
