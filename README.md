@@ -11,7 +11,9 @@
 ## Smartkarma UI Kit
 
 ### Installation
-```UPDATE ME```
+```
+$ npm i https://github.com/smartkarma/sk-components.git
+```
 
 ### Usage
 ```UPDATE ME```
@@ -19,10 +21,21 @@
 ### Components
 ```UPDATE ME```
 
-### Live components
-```UPDATE ME```
-
 <br/><br/><br/>
+
+#### How to Contribute
+```
+$ git clone https://github.com/smartkarma/sk-components.git
+$ cd sk-components
+$ git checkout -b comp/your-new-component
+```
+
+To documentation your new component, please create `stories` in your component folder.
+And please make sure it's run on storybook
+```
+$ npm run storybook
+```
+
 
 #### Contributors
 ```UPDATE ME```
