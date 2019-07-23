@@ -4,4 +4,4 @@ import Text from './Text';
 
 const stories = storiesOf('Components.Text', module);
 
-stories.add('Normal', () => <Text>This is text</Text>)
+stories.add('default', () => <Text>This is text</Text>);
