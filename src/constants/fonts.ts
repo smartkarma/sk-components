@@ -5,13 +5,13 @@ export enum FamilyEnum {
 }
 
 export type FamilyWeight = 'Thin' | 'Light' | 'Regular' | 'Medium' | 'Bold' | 'Black'
-export enum FamilyWeightEnum {
-  '100' = 'Thin',
-  '300' = 'Light',
-  '400' = 'Regular',
-  '500' = 'Medium',
-  '700' = 'Bold',
-  '900' = 'Black',
-}
+export const FamilyWeightEnum = {
+  100: 'Thin',
+  300: 'Light',
+  400: 'Regular',
+  500: 'Medium',
+  700: 'Bold',
+  900: 'Black',
+};
 
-export type FamilyTypes = 'PTSerifRegular' | 'PTSerifBlack' | 'RobotoThin' | 'RobotoLight' | 'RobotoRegular' | 'RobotoMedium' | 'RobotoBold' | 'RobotoBlack'
+export type FamilyTypes = 'PTSerifRegular' | 'PTSerifBold' | 'RobotoThin' | 'RobotoLight' | 'RobotoRegular' | 'RobotoMedium' | 'RobotoBold' | 'RobotoBlack'

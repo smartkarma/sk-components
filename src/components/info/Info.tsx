@@ -18,10 +18,14 @@ export default class Info extends React.Component<Types.InfoProps, Types.InfoSta
     return (
       <View style={[styles.container]}>
         { title && <Text weight={700}>{title}</Text>}
-        <Text type='PTSerif'>{description}</Text>
-        <View style={[styles.componentContainer]}>
-          {children}
-        </View>
+        <Text color={Colors.INTELLIGENT_SILVER} type='PTSerif'>{description}</Text>
+        {
+          children && (
+            <View style={[styles.componentContainer]}>
+              {children}
+            </View>
+          )
+        }
       </View>
     );
   }
@@ -29,9 +33,10 @@ export default class Info extends React.Component<Types.InfoProps, Types.InfoSta
 
 const styles = StyleSheet.create({
   componentContainer: {
-    borderColor: Colors.NEARLY_WHITE,
+    borderColor: Colors.INTELLIGENT_SILVER,
+    borderStyle: 'dashed',
     borderWidth: .5,
-    marginTop: 5
+    marginTop: 10
   },
   container: {
     elevation: 3,
