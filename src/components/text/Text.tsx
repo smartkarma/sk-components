@@ -1,6 +1,6 @@
 import React from 'react';
 import { Animated } from 'react-native';
-import { Colors, Sizes } from '../../constants';
+import { Colors, Fonts, Sizes } from '../../constants';
 import { HOVERING_DURATION } from '../../constants/numbers';
 import * as Types from './type';
 
@@ -12,7 +12,9 @@ export default class Text extends React.Component<Types.Props, Types.State> {
     disabled: false,
     hoverable: false,
     size: Sizes.TypesEnum.SMALL,
-    tint: false
+    tint: false,
+    type: Fonts.FamilyEnum.ROBOTO,
+    weight: 400,
   };
 
   animHoveringColorValue = new Animated.Value(0);
@@ -31,8 +33,6 @@ export default class Text extends React.Component<Types.Props, Types.State> {
     }).start();
   };
 
-  getColor = () => this.props.tint ? this.props.colorTint : this.props.color;
-
   render() {
     const {
       children,
@@ -40,10 +40,12 @@ export default class Text extends React.Component<Types.Props, Types.State> {
       colorHover,
       colorTint,
       disabled,
+      type,
       hoverable,
       onPress,
       style,
-      tint
+      tint,
+      weight
     } = this.props;
     const textColor = tint ? colorTint : color;
     const hoveringColor = this.animHoveringColorValue.interpolate({
@@ -57,6 +59,7 @@ export default class Text extends React.Component<Types.Props, Types.State> {
         onMouseLeave={this.onMouseLeave}
         style={[
           { color: disabled ? Colors.INACTIVE_GREY : hoverable ? hoveringColor : textColor },
+          { fontFamily: `${type}${Fonts.FamilyWeightEnum[weight]}` },
           style
         ]}
       >
