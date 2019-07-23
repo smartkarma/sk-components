@@ -40,7 +40,6 @@
   ],
   "devDependencies": {
     "@storybook/addon-actions": "^5.1.9",
-    "@storybook/addon-knobs": "^5.1.9",
     "@storybook/addon-options": "^5.1.9",
     "@storybook/addon-viewport": "^5.1.9",
     "@storybook/addons": "^5.1.9",
@@ -67,7 +66,8 @@
     "@types/react-native": "^0.60.0",
     "lodash-es": "^4.17.14",
     "react": "^16.8.6",
-    "react-native": "^0.59.9"
+    "react-native": "^0.59.9",
+    "react-native-syntax-highlighter": "^2.0.1"
   },
   "peerDependencies": {
     "@types/react": "^16.8.23",

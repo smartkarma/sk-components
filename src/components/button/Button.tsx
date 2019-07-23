@@ -3,10 +3,12 @@ import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { Colors, Numbers, Sizes } from '../../constants';
 import Text from '../text';
+import Group from './Group';
 import * as Types from './type';
 
-export default class Button extends React.Component<Types.Props, Types.State> {
-  static defaultProps: Types.Props = {
+export default class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
+  static defaultProps: Types.ButtonProps = {
+    centered: false,
     color: Colors.JADE,
     disabled: false,
     onPress: noop,
@@ -16,8 +18,12 @@ export default class Button extends React.Component<Types.Props, Types.State> {
     type: Types.ButtonTypesEnum.NORMAL
   };
 
+  public static Types = Types.ButtonTypesEnum;
+  public static Group = Group;
+
   render() {
     const {
+      centered,
       color,
       disabled,
       onPress,
@@ -31,7 +37,8 @@ export default class Button extends React.Component<Types.Props, Types.State> {
         onPress={onPress}
         style={[
           styles.buttonContainer,
-          { backgroundColor: disabled ? Colors.INACTIVE_GREY : color }
+          { backgroundColor: disabled ? Colors.INACTIVE_GREY : color },
+          { alignSelf: centered ? 'center' : 'flex-start'}
         ]}
       >
         <Text color={textColor}>{text}</Text>
@@ -45,5 +52,5 @@ const styles = StyleSheet.create({
     borderRadius: 2,
     margin: 5,
     padding: 5
-  }
+  },
 });

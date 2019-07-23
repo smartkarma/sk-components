@@ -1,7 +1,13 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import Text from './Text';
+import { Info, Text } from '../src';
 
-const stories = storiesOf('Components.Text', module);
+const stories = storiesOf('Components', module);
 
-stories.add('default', () => <Text>This is text</Text>);
+stories.add('Text', () => (
+  <>
+    <Info title='Text' description='A standard text.'>
+      <Text>Typography</Text>
+    </Info>
+  </>
+));

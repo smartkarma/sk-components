@@ -1,12 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-
-export interface Props {
-  componentId: string
-}
-
-interface State {
-}
+import { Props, State } from './bluprint_type'
 
 export default class Blueprint extends React.Component<Props, State> {
   static defaultProps = {};

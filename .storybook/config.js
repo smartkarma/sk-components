@@ -2,7 +2,7 @@ import { addParameters, configure } from "@storybook/react";
 import { create } from "@storybook/theming";
 import { Colors } from "../src/constants";
 
-const req = require.context("../src/components", true, /\.stories\.tsx$/);
+const req = require.context("../stories", true, /\.stories\.tsx$/);
 
 function loadStories() {
   req.keys().forEach(filename => req(filename));

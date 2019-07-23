@@ -21,7 +21,9 @@
     "noUnusedParameters": true
   },
   "include": [
-    "src"
+    "src",
+    "node_modules/typescript/lib/lib.es5.d.ts",
+    "node_modules/typescript/lib/lib.es5.d.ts"
   ],
   "exclude": [
     "node_modules",
