@@ -43,6 +43,7 @@ export default class Text extends React.Component<Types.Props, Types.State> {
       type,
       hoverable,
       onPress,
+      size,
       style,
       tint,
       weight
@@ -60,6 +61,7 @@ export default class Text extends React.Component<Types.Props, Types.State> {
         style={[
           { color: disabled ? Colors.INACTIVE_GREY : hoverable ? hoveringColor : textColor },
           { fontFamily: `${type}${Fonts.FamilyWeightEnum[weight]}` },
+          { fontSize: Sizes.TypesValue[size] },
           style
         ]}
       >

@@ -9,7 +9,7 @@ export interface Props {
   disabled?: boolean;
   type?: Fonts.Family;
   hoverable?: boolean;
-  size?: Sizes.Types;
+  size: Sizes.Types;
   style?: ViewStyle;
   tint?: boolean;
   weight: number;

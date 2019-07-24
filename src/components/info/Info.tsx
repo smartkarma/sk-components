@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Colors } from '../../constants';
+import { Colors, Sizes } from '../../constants';
 import Text from '../text';
 import * as Types from './type'
 
@@ -17,8 +17,8 @@ export default class Info extends React.Component<Types.InfoProps, Types.InfoSta
     } = this.props;
     return (
       <View style={[styles.container]}>
-        { title && <Text weight={700}>{title}</Text>}
-        <Text color={Colors.INTELLIGENT_SILVER} type='PTSerif'>{description}</Text>
+        { title && <Text size={Sizes.TypesEnum.LARGE} weight={700}>{title}</Text>}
+        <Text size={Sizes.TypesEnum.MINI} color={Colors.INTELLIGENT_SILVER} type='PTSerif'>{description}</Text>
         {
           children && (
             <View style={[styles.componentContainer]}>
