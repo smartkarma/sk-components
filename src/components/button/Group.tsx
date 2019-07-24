@@ -7,7 +7,7 @@ export default class Group extends React.Component<Types.ButtonGroupProps, Types
     type: Types.ButtonGroupTypesEnum.VERTICAL
   };
 
-  public static Types: Types.ButtonGroupTypesEnum = Types.ButtonGroupTypesEnum;
+  public static Types = Types.ButtonGroupTypesEnum;
 
   render() {
     const {
