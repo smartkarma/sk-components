@@ -1,7 +1,8 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { Info, Text } from '../src';
-import { Fonts, Sizes } from '../src/constants';
+import { Colors, Fonts, Sizes } from '../src/constants';
 
 const stories = storiesOf('Components', module);
 
@@ -13,14 +14,17 @@ stories.add('Text', () => (
     />
     <Info description='A standard text.'>
       <Text>This is text</Text>
+      <Text centered>This is centered</Text>
+      <Text rightAligned>This is right-aligned</Text>
     </Info>
     <Info description='A disabled text.'>
       <Text disabled>Disabled text</Text>
     </Info>
     <Info description='A hoverable text.'>
       <Text hoverable>This text is hoverable on the web</Text>
+      <Text hoverable colorHover={Colors.BEARISH_RED}>This text is hoverable on the web with custom hover-color</Text>
     </Info>
-    <Info description='Type and weight.'>
+    <Info description='A typed text and a weighted text.'>
       <Text weight={100}>Typography Roboto Thin</Text>
       <Text weight={300}>Typography Roboto Light</Text>
       <Text weight={400}>Typography Roboto Regular</Text>
@@ -30,13 +34,24 @@ stories.add('Text', () => (
       <Text type={Fonts.FamilyEnum.PT_SERIF} weight={400}>Typography PT Serif Regular</Text>
       <Text type={Fonts.FamilyEnum.PT_SERIF} weight={700}>Typography PT Serif Bold</Text>
     </Info>
-    <Info description='Sizing'>
+    <Info description='A Sized text.'>
       <Text size={Sizes.TypesEnum.TINY}>Tiny Text</Text>
       <Text size={Sizes.TypesEnum.MINI}>Mini Text</Text>
       <Text size={Sizes.TypesEnum.SMALL}>Small Text</Text>
       <Text size={Sizes.TypesEnum.LARGE}>Large Text</Text>
       <Text size={Sizes.TypesEnum.HUGE}>Huge Text</Text>
       <Text size={Sizes.TypesEnum.MASSIVE}>Massive Text</Text>
+    </Info>
+    <Info description='A Colored text.'>
+      <Text color={Colors.PRIMARY}>Primary color</Text>
+      <Text color={Colors.BEARISH_RED}>Bearish red</Text>
+      <Text color={Colors.BULLISH_GREEN}>Bearish green</Text>
+    </Info>
+    <Info description='A clickable text'>
+      <Text onPress={action('The text is pressed')}>Press me!</Text>
+      <Text hoverable onPress={action('The text with hover is pressed')}>Press me! with hover</Text>
+      <Text hoverable colorHover={Colors.BEARISH_RED} color={Colors.BULLISH_GREEN}
+            onPress={action('The text colored with hover is pressed')}>Press me! colored with hover</Text>
     </Info>
   </>
 ));

@@ -6,11 +6,13 @@ import * as Types from './type';
 
 export default class Text extends React.Component<Types.Props, Types.State> {
   static defaultProps: Types.Props = {
+    centered: false,
     color: Colors.SECONDARY,
     colorHover: Colors.PRIMARY,
     colorTint: Colors.SECONDARY_TINT,
     disabled: false,
     hoverable: false,
+    rightAligned: false,
     size: Sizes.TypesEnum.SMALL,
     tint: false,
     type: Fonts.FamilyEnum.ROBOTO,
@@ -35,6 +37,7 @@ export default class Text extends React.Component<Types.Props, Types.State> {
 
   render() {
     const {
+      centered,
       children,
       color,
       colorHover,
@@ -43,6 +46,7 @@ export default class Text extends React.Component<Types.Props, Types.State> {
       type,
       hoverable,
       onPress,
+      rightAligned,
       size,
       style,
       tint,
@@ -59,6 +63,7 @@ export default class Text extends React.Component<Types.Props, Types.State> {
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
         style={[
+          { alignSelf: centered ? 'center' : rightAligned ? 'flex-end' : 'flex-start'},
           { color: disabled ? Colors.INACTIVE_GREY : hoverable ? hoveringColor : textColor },
           { fontFamily: `${type}${Fonts.FamilyWeightEnum[weight]}` },
           { fontSize: Sizes.TypesValue[size] },

@@ -2,6 +2,7 @@ import { ViewStyle } from 'react-native';
 import { Fonts, Sizes } from '../../constants';
 
 export interface Props {
+  centered?: boolean;
   componentId?: string;
   color: string;
   colorHover: string;
@@ -9,6 +10,7 @@ export interface Props {
   disabled?: boolean;
   type?: Fonts.Family;
   hoverable?: boolean;
+  rightAligned?: boolean;
   size: Sizes.Types;
   style?: ViewStyle;
   tint?: boolean;
