@@ -4,11 +4,11 @@ import { Sizes } from '../../constants';
 
 // Button
 export interface ButtonProps {
-  basic?: boolean;
   centered?: boolean;
   componentId?: string;
   color?: string;
   disabled?: boolean;
+  hoverable?: boolean;
   onPress?: () => void;
   rightAligned?: boolean;
   size?: Sizes.Types;
