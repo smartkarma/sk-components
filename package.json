@@ -1,6 +1,6 @@
 {
   "name": "sk-components",
-  "version": "0.0.1",
+  "version": "0.0.10008",
   "description": "Smartkarma UI Kit",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -68,9 +68,7 @@
     "@types/react-native": "^0.60.0",
     "color": "^3.1.2",
     "fbjs": "^1.0.0",
-    "lodash-es": "^4.17.14",
-    "react": "^16.8.6",
-    "react-native": "^0.59.9"
+    "lodash-es": "^4.17.14"
   },
   "peerDependencies": {
     "@types/react": "^16.8.23",

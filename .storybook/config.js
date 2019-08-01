@@ -1,6 +1,7 @@
 import { addParameters, configure } from "@storybook/react";
 import { create } from "@storybook/theming";
 import { Colors } from "../src/constants";
+import '../src/index.css';
 
 const req = require.context("../stories", true, /\.stories\.tsx$/);
 
