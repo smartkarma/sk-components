@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { ButtonProps } from './type';
 import * as Types from './type';
 
 export default class Group extends React.Component<Types.ButtonGroupProps, Types.ButtonGroupState> {
@@ -11,15 +12,35 @@ export default class Group extends React.Component<Types.ButtonGroupProps, Types
 
   render() {
     const {
+      centered,
       type,
+      fluid,
+      hoverable,
       children
     } = this.props;
+
     return (
       <View style={[
         styles.buttonGroupContainer,
-        type === Types.ButtonGroupTypesEnum.HORIZONTAL && styles.buttonGroupHorizontal
+        type === Types.ButtonGroupTypesEnum.HORIZONTAL && styles.buttonGroupHorizontal,
+        { justifyContent: centered ? 'center' : undefined }
       ]}>
-        {children}
+        {
+          React.Children.map(children, (child: React.ReactElement<ButtonProps>, i) => {
+            const marginTop = type === Types.ButtonGroupTypesEnum.HORIZONTAL ? undefined : i !== 0 ? 0 : undefined;
+            return (
+              React.cloneElement(child, {
+                centered,
+                fluid,
+                hoverable,
+                style: {
+                  flexGrow: fluid ? 1 : 0,
+                  marginTop
+                }
+              })
+            );
+          })
+        }
       </View>
     );
   }
@@ -27,7 +48,7 @@ export default class Group extends React.Component<Types.ButtonGroupProps, Types
 
 const styles = StyleSheet.create({
   buttonGroupContainer: {
-    margin: 5
+    margin: 0
   },
   buttonGroupHorizontal: {
     flexDirection: 'row'

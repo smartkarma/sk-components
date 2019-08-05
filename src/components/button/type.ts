@@ -1,4 +1,3 @@
-import React from 'react';
 import { ViewStyle } from 'react-native';
 import { Sizes } from '../../constants';
 
@@ -8,11 +7,12 @@ export interface ButtonProps {
   componentId?: string;
   color?: string;
   disabled?: boolean;
-  fluid: boolean;
-  hoverable?: boolean;
+  fluid: boolean | undefined;
+  hoverable?: boolean | undefined;
   onPress?: () => void;
   rightAligned?: boolean;
   size?: Sizes.Types;
+  style?: any;
   text?: string;
   textColor?: string;
   type?: ButtonTypes;
@@ -37,10 +37,13 @@ export enum ButtonGroupTypesEnum {
 
 // ButtonGroup
 export interface ButtonGroupProps {
+  centered?: boolean;
+  children?: any;
   componentId?: string;
-  type?: ButtonGroupTypes;
-  children?: React.ReactNode;
+  fluid?: boolean;
+  hoverable?: boolean;
   style?: ViewStyle;
+  type?: ButtonGroupTypes;
 }
 
 export interface ButtonGroupState {
