@@ -8,6 +8,7 @@ export interface ButtonProps {
   componentId?: string;
   color?: string;
   disabled?: boolean;
+  fluid: boolean;
   hoverable?: boolean;
   onPress?: () => void;
   rightAligned?: boolean;

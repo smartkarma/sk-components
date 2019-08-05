@@ -13,6 +13,7 @@ class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
     centered: false,
     color: Colors.JADE,
     disabled: false,
+    fluid: false,
     hoverable: false,
     onPress: noop,
     rightAligned: false,
@@ -30,6 +31,7 @@ class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
       centered,
       color,
       disabled,
+      fluid,
       hoverable,
       onPress,
       rightAligned,
@@ -38,7 +40,7 @@ class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
     } = this.props;
     const backgroundColorAdvanced: any = Color(disabled ? Colors.INACTIVE_GREY : color);
     const backgroundColor: any = backgroundColorAdvanced.string();
-    const alignSelf: any = centered ? 'center' : rightAligned ? 'flex-end' : 'flex-start';
+    const alignSelf: any = centered ? 'center' : rightAligned ? 'flex-end' : fluid ? undefined : 'flex-start';
     return (
       <Hoverable>
         {
@@ -52,7 +54,7 @@ class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
                 { backgroundColor: isHovered && hoverable ? backgroundColorAdvanced.darken(0.1) : backgroundColor, alignSelf }
               ]}
             >
-              <Text color={textColor}>{text}</Text>
+              <Text centered color={textColor}>{text}</Text>
             </TouchableOpacity>
           )
         }

@@ -22,5 +22,8 @@ stories.add('Button', () => (
     <Info description='A hoverable button.'>
       <Button hoverable text='Press me!'/>
     </Info>
+    <Info description='A fluid button.'>
+      <Button fluid onPress={action('Button is pressed!')} text='Press me!'/>
+    </Info>
   </>
 ));
