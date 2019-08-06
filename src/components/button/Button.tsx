@@ -15,7 +15,7 @@ class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
     color: Colors.PRIMARY,
     disabled: false,
     fluid: false,
-    hoverable: false,
+    hoverable: true,
     onPress: noop,
     rightAligned: false,
     size: Sizes.TypesEnum.SMALL,

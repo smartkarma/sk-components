@@ -42,6 +42,7 @@ export interface ButtonGroupProps {
   componentId?: string;
   fluid?: boolean;
   hoverable?: boolean;
+  rightAligned?: boolean;
   style?: ViewStyle;
   type?: ButtonGroupTypes;
 }

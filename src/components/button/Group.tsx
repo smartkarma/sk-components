@@ -16,6 +16,7 @@ export default class Group extends React.Component<Types.ButtonGroupProps, Types
       type,
       fluid,
       hoverable,
+      rightAligned,
       children
     } = this.props;
 
@@ -23,7 +24,7 @@ export default class Group extends React.Component<Types.ButtonGroupProps, Types
       <View style={[
         styles.buttonGroupContainer,
         type === Types.ButtonGroupTypesEnum.HORIZONTAL && styles.buttonGroupHorizontal,
-        { justifyContent: centered ? 'center' : undefined }
+        { justifyContent: centered ? 'center' : rightAligned ? 'flex-end' : undefined }
       ]}>
         {
           React.Children.map(children, (child: React.ReactElement<ButtonProps>, i) => {
@@ -33,6 +34,7 @@ export default class Group extends React.Component<Types.ButtonGroupProps, Types
                 centered,
                 fluid,
                 hoverable,
+                rightAligned,
                 style: {
                   flexGrow: fluid ? 1 : 0,
                   marginTop
