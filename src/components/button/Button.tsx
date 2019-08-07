@@ -40,30 +40,36 @@ class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
       textColor
     } = this.props;
     const backgroundColorAdvanced: any = Color(disabled ? Colors.INACTIVE_GREY : color);
-    const isBackgroundLight = backgroundColorAdvanced.luminosity() >= LUMINOSITY;
+    const backgroundColorLuminosity = backgroundColorAdvanced.luminosity();
+    const isBackgroundLight =  backgroundColorLuminosity >= LUMINOSITY;
     const textColorThemed = textColor ? textColor : isBackgroundLight ? Colors.GREY_GREY : Colors.WHITE;
     const backgroundColor: any = backgroundColorAdvanced.string();
     const alignSelf: any = centered ? 'center' : rightAligned ? 'flex-end' : fluid ? undefined : 'flex-start';
     return (
       <Hoverable>
         {
-          (isHovered: boolean) => (
-            <TouchableOpacity
-              activeOpacity={Numbers.TOUCH_OPACITY}
-              disabled={disabled}
-              onPress={onPress}
-              style={[
-                styles.buttonContainer,
-                {
-                  alignSelf,
-                  backgroundColor: isHovered && hoverable ? backgroundColorAdvanced.darken(0.1) : backgroundColor,
-                },
-                style
-              ]}
-            >
-              <Text centered color={textColorThemed}>{text}</Text>
-            </TouchableOpacity>
-          )
+          (isHovered: boolean) => {
+            return (
+              <TouchableOpacity
+                activeOpacity={Numbers.TOUCH_OPACITY}
+                disabled={disabled}
+                onPress={onPress}
+                style={[
+                  styles.buttonContainer,
+                  {
+                    alignSelf,
+                    backgroundColor: isHovered && hoverable && !disabled
+                      ? backgroundColorLuminosity <= 0.05
+                        ? backgroundColorAdvanced.lighten(0.3) : backgroundColorAdvanced.darken(0.1)
+                      : backgroundColor,
+                  },
+                  style
+                ]}
+              >
+                <Text centered color={textColorThemed}>{text}</Text>
+              </TouchableOpacity>
+            )
+          }
         }
       </Hoverable>
     );
