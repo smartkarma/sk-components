@@ -3,7 +3,7 @@ import { noop } from 'lodash-es';
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { Colors, Numbers, Sizes } from '../../constants';
-import { LUMINOSITY } from '../../constants/numbers';
+import { HOVER_ON_DARKEN, HOVER_ON_LIGHTEN, LUMINOSITY_DARK, LUMINOSITY_LIGHT } from '../../constants/numbers';
 import Hoverable from '../hoverable';
 import Text from '../text';
 import Group from './Group';
@@ -41,7 +41,7 @@ class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
     } = this.props;
     const backgroundColorAdvanced: any = Color(disabled ? Colors.INACTIVE_GREY : color);
     const backgroundColorLuminosity = backgroundColorAdvanced.luminosity();
-    const isBackgroundLight =  backgroundColorLuminosity >= LUMINOSITY;
+    const isBackgroundLight =  backgroundColorLuminosity >= LUMINOSITY_LIGHT;
     const textColorThemed = textColor ? textColor : isBackgroundLight ? Colors.GREY_GREY : Colors.WHITE;
     const backgroundColor: any = backgroundColorAdvanced.string();
     const alignSelf: any = centered ? 'center' : rightAligned ? 'flex-end' : fluid ? undefined : 'flex-start';
@@ -59,8 +59,8 @@ class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
                   {
                     alignSelf,
                     backgroundColor: isHovered && hoverable && !disabled
-                      ? backgroundColorLuminosity <= 0.05
-                        ? backgroundColorAdvanced.lighten(0.3) : backgroundColorAdvanced.darken(0.1)
+                      ? backgroundColorLuminosity <= LUMINOSITY_DARK
+                        ? backgroundColorAdvanced.lighten(HOVER_ON_LIGHTEN) : backgroundColorAdvanced.darken(HOVER_ON_DARKEN)
                       : backgroundColor,
                   },
                   style
