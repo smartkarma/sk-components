@@ -11,11 +11,13 @@ export interface ButtonProps {
   fluid: boolean | undefined;
   hoverable?: boolean | undefined;
   onPress?: () => void;
+  onLongPress?: () => void;
   rightAligned?: boolean;
   size?: Sizes.Types;
   style?: any;
   text?: string;
   textColor?: string;
+  textWeight?: number;
   type?: ButtonTypes;
 }
 

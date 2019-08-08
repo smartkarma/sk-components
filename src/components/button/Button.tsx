@@ -2,14 +2,14 @@ import Color from 'color';
 import { noop } from 'lodash-es';
 import React from 'react';
 import { TouchableHighlight } from 'react-native';
-import { Colors, Numbers, Sizes } from '../../constants';
+import { Colors, Sizes } from '../../constants';
 import {
   BG_TO_DARKEN,
   BG_TO_DARKER,
   BG_TO_OPACITY,
-  LUMINOSITY_LIGHT,
-  TEXT_TO_DARKEN,
-  TEXT_TO_LIGHTEN
+  LUMINOSITY_LIGHT, TEXT_TO_DARKEN,
+  TEXT_TO_DARKER, TEXT_TO_LIGHTEN,
+  TEXT_TO_LIGHTER
 } from '../../constants/numbers';
 import Hoverable from '../hoverable';
 import Text from '../text';
@@ -25,10 +25,12 @@ class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
     disabled: false,
     fluid: false,
     hoverable: true,
+    onLongPress: noop,
     onPress: noop,
     rightAligned: false,
     size: Sizes.TypesEnum.SMALL,
     text: 'Press me!',
+    textWeight: 500,
     type: Types.ButtonTypesEnum.NORMAL
   };
 
@@ -43,50 +45,54 @@ class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
       disabled,
       fluid,
       hoverable,
+      onLongPress,
       onPress,
       rightAligned,
       style,
       text,
-      textColor
+      textColor,
+      textWeight
     } = this.props;
 
     // Color
-    const backgroundColorAdvanced: any = Color(color);
+    const backgroundColorAdvanced: any = new Color(color);
     const backgroundColorLuminosity = backgroundColorAdvanced.luminosity();
     const isBackgroundLight =  backgroundColorLuminosity >= LUMINOSITY_LIGHT;
     const backgroundColorThemed: string = disabled ? backgroundColorAdvanced.fade(BG_TO_OPACITY) : backgroundColorAdvanced.string();
     const backgroundColorHovered: string = backgroundColorAdvanced.darken(BG_TO_DARKER);
     const backgroundColorClicked: string = backgroundColorAdvanced.darken(BG_TO_DARKEN);
-    const textColorAdvanced: any = Color(textColor ? textColor : isBackgroundLight ? Colors.GREY_GREY : Colors.WHITE);
-    const textColorThemed: string = disabled
-      ? isBackgroundLight
-        ? textColorAdvanced.lighten(TEXT_TO_LIGHTEN) : textColorAdvanced.darken(TEXT_TO_DARKEN)
-      : textColorAdvanced.string();
+
+    const textColorAdvanced: any = new Color(textColor ? textColor : isBackgroundLight ? Colors.SUBTLE_BLACK : Colors.WHITE);
+    const textColorThemed: string = isBackgroundLight
+      ? textColorAdvanced.lighten(TEXT_TO_LIGHTER)
+      : textColorAdvanced.darken(TEXT_TO_DARKER);
+    const textColorHovered: string = isBackgroundLight ? textColorAdvanced.darken(TEXT_TO_DARKEN) : textColorAdvanced.lighten(TEXT_TO_LIGHTEN);
 
     // Position
     const alignSelf: any = centered ? 'center' : rightAligned ? 'flex-end' : fluid ? undefined : 'flex-start';
     return (
       <Hoverable>
         {
-          (isHovered: boolean) => {
+          (isHovered: boolean, isPressing: boolean) => {
             return (
               <TouchableHighlight
-                activeOpacity={Numbers.TOUCH_OPACITY}
-                underlayColor={backgroundColorClicked}
+                activeOpacity={1}
+                underlayColor={hoverable ? backgroundColorClicked : backgroundColorHovered}
                 disabled={disabled}
                 onPress={onPress}
+                onLongPress={onLongPress}
                 style={[
                   styles.buttonContainer(compact ? ButtonTypesEnum.COMPACT : undefined),
                   {
                     alignSelf,
-                    backgroundColor: isHovered && hoverable && !disabled
-                      ? backgroundColorHovered
+                    backgroundColor: isHovered && !disabled
+                      ? isPressing ? backgroundColorClicked : hoverable ? backgroundColorHovered : backgroundColorThemed
                       : backgroundColorThemed,
                   },
                   style
                 ]}
               >
-                <Text centered color={textColorThemed}>{text}</Text>
+                <Text centered weight={textWeight} color={ isHovered && !disabled ? textColorHovered : textColorThemed }>{text}</Text>
               </TouchableHighlight>
             )
           }

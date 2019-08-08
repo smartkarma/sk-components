@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   container: {
+    backgroundColor: Colors.WHITE,
     elevation: 3,
     margin: 5,
     padding: 15,

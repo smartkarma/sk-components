@@ -4,6 +4,7 @@ export interface HoverableProps {
 }
 
 export interface HoverableState {
+  isPressing?: boolean;
   isHovered?: boolean;
   showHover?: boolean;
 }

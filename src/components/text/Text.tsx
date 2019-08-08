@@ -20,9 +20,10 @@ export default class Text extends React.Component<Types.Props, Types.State> {
   };
 
   animHoveringColorValue = new Animated.Value(0);
+  private rootComponent: any;
 
   setNativeProps(nativeProps) {
-    this._root.setNativeProps(nativeProps)
+    this.rootComponent.setNativeProps(nativeProps)
   }
 
   onMouseEnter = () => {
@@ -63,6 +64,7 @@ export default class Text extends React.Component<Types.Props, Types.State> {
     });
     return (
       <Animated.Text
+        ref={component => this.rootComponent = component}
         onPress={onPress}
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
