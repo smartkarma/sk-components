@@ -19,7 +19,8 @@ stories.add('Button', () => (
       <Button onPress={action('Button is pressed!')} rightAligned text='Press me! right-aligned'/>
     </Info>
     <Info description='A disabled button.'>
-      <Button onPress={action('Button is pressed!')} disabled text='Press me!'/>
+      <Button color={Colors.INTELLIGENT_SILVER_TINT} onPress={action('Button is pressed!')} disabled text='Press me!'/>
+      <Button color={Colors.BULLISH_GREEN} onPress={action('Button is pressed!')} disabled text='Press me!'/>
     </Info>
     <Info description='A non-hoverable button.'>
       <Button color={Colors.SMART_TEAL_TINT} hoverable={false} text='Press me!'/>
@@ -48,11 +49,11 @@ stories.add('Button', () => (
     <Info description='A grouped button (horizontal).'>
       <Button.Group type={ButtonGroupTypesEnum.HORIZONTAL}>
         <Button onPress={action('Button is pressed!')} text='Submit'/>
-        <Button color={Colors.SECONDARY} onPress={action('Button is pressed!')} text='Cancel'/>
+        <Button color={Colors.INTELLIGENT_SILVER_TINT} onPress={action('Button is pressed!')} text='Cancel'/>
       </Button.Group>
       <Button.Group type={ButtonGroupTypesEnum.HORIZONTAL} centered>
         <Button color={Colors.BEARISH_RED} onPress={action('Button is pressed!')} text='Remove'/>
-        <Button color={Colors.SECONDARY} onPress={action('Button is pressed!')} text='Cancel'/>
+        <Button color={Colors.INTELLIGENT_SILVER_TINT} onPress={action('Button is pressed!')} text='Cancel'/>
       </Button.Group>
       <Button.Group type={ButtonGroupTypesEnum.HORIZONTAL} rightAligned>
         <Button color={Colors.BULLISH_GREEN} onPress={action('Button is pressed!')} text='Proceed'/>

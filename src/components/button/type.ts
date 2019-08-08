@@ -4,6 +4,7 @@ import { Sizes } from '../../constants';
 // Button
 export interface ButtonProps {
   centered?: boolean;
+  compact?: boolean;
   componentId?: string;
   color?: string;
   disabled?: boolean;

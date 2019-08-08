@@ -3,7 +3,12 @@ import { noop } from 'lodash-es';
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { Colors, Numbers, Sizes } from '../../constants';
-import { HOVER_ON_DARKEN, HOVER_ON_LIGHTEN, LUMINOSITY_DARK, LUMINOSITY_LIGHT } from '../../constants/numbers';
+import {
+  BG_TO_DARKEN,
+  BG_TO_LIGHTEN, BG_TO_OPACITY,
+  LUMINOSITY_DARK,
+  LUMINOSITY_LIGHT, TEXT_TO_DARKEN, TEXT_TO_LIGHTEN
+} from '../../constants/numbers';
 import Hoverable from '../hoverable';
 import Text from '../text';
 import Group from './Group';
@@ -13,6 +18,7 @@ class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
   static defaultProps: Types.ButtonProps = {
     centered: false,
     color: Colors.PRIMARY,
+    compact: false,
     disabled: false,
     fluid: false,
     hoverable: true,
@@ -39,11 +45,20 @@ class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
       text,
       textColor
     } = this.props;
-    const backgroundColorAdvanced: any = Color(disabled ? Colors.INACTIVE_GREY : color);
+
+    // Color
+    const backgroundColorAdvanced: any = Color(color);
     const backgroundColorLuminosity = backgroundColorAdvanced.luminosity();
     const isBackgroundLight =  backgroundColorLuminosity >= LUMINOSITY_LIGHT;
-    const textColorThemed = textColor ? textColor : isBackgroundLight ? Colors.GREY_GREY : Colors.WHITE;
-    const backgroundColor: any = backgroundColorAdvanced.string();
+    const backgroundColorThemed: string = disabled ? backgroundColorAdvanced.fade(BG_TO_OPACITY) : backgroundColorAdvanced.string();
+
+    const textColorAdvanced: any = Color(textColor ? textColor : isBackgroundLight ? Colors.GREY_GREY : Colors.WHITE);
+    const textColorThemed: string = disabled
+      ? isBackgroundLight
+        ? textColorAdvanced.lighten(TEXT_TO_LIGHTEN) : textColorAdvanced.darken(TEXT_TO_DARKEN)
+      : textColorAdvanced.string();
+
+    // Position
     const alignSelf: any = centered ? 'center' : rightAligned ? 'flex-end' : fluid ? undefined : 'flex-start';
     return (
       <Hoverable>
@@ -60,8 +75,8 @@ class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
                     alignSelf,
                     backgroundColor: isHovered && hoverable && !disabled
                       ? backgroundColorLuminosity <= LUMINOSITY_DARK
-                        ? backgroundColorAdvanced.lighten(HOVER_ON_LIGHTEN) : backgroundColorAdvanced.darken(HOVER_ON_DARKEN)
-                      : backgroundColor,
+                        ? backgroundColorAdvanced.lighten(BG_TO_LIGHTEN) : backgroundColorAdvanced.darken(BG_TO_DARKEN)
+                      : backgroundColorThemed,
                   },
                   style
                 ]}
