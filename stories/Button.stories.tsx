@@ -79,6 +79,11 @@ stories.add('Button', () => (
         <Button color={Colors.INTELLIGENT_SILVER_TINT} onPress={action('Button is pressed!')} text='Normal'/>
         <Button color={Colors.BEARISH_RED} onPress={action('Button is pressed!')} text='Bear'/>
       </Button.Group>
+      <Button.Group fluid compact type={ButtonGroupTypesEnum.HORIZONTAL}>
+        <Button color={Colors.BULLISH_GREEN} onPress={action('Button is pressed!')} text='Bull'/>
+        <Button color={Colors.INTELLIGENT_SILVER_TINT} onPress={action('Button is pressed!')} text='Normal'/>
+        <Button color={Colors.BEARISH_RED} onPress={action('Button is pressed!')} text='Bear'/>
+      </Button.Group>
     </Info>
   </>
 ));

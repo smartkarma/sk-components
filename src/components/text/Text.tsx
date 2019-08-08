@@ -21,6 +21,10 @@ export default class Text extends React.Component<Types.Props, Types.State> {
 
   animHoveringColorValue = new Animated.Value(0);
 
+  setNativeProps(nativeProps) {
+    this._root.setNativeProps(nativeProps)
+  }
+
   onMouseEnter = () => {
     Animated.timing(this.animHoveringColorValue, {
       duration: HOVERING_DURATION,
