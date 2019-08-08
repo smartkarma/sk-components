@@ -28,6 +28,9 @@ stories.add('Button', () => (
     <Info description='A fluid button.'>
       <Button fluid onPress={action('Button is pressed!')} text='Press me!'/>
     </Info>
+    <Info description='A compact button.'>
+      <Button compact onPress={action('Button is pressed!')} text='Press me!'/>
+    </Info>
     <Info
       title='Grouped Button'
       description='The buttons can be grouped.'
@@ -58,6 +61,23 @@ stories.add('Button', () => (
       <Button.Group type={ButtonGroupTypesEnum.HORIZONTAL} rightAligned>
         <Button color={Colors.BULLISH_GREEN} onPress={action('Button is pressed!')} text='Proceed'/>
         <Button color={Colors.INTELLIGENT_SILVER_TINT} onPress={action('Button is pressed!')} text='Cancel'/>
+      </Button.Group>
+    </Info>
+    <Info description='A grouped button (fluid).'>
+      <Button.Group fluid type={ButtonGroupTypesEnum.HORIZONTAL}>
+        <Button onPress={action('Button is pressed!')} text='Submit'/>
+        <Button color={Colors.INTELLIGENT_SILVER_TINT} onPress={action('Button is pressed!')} text='Cancel'/>
+      </Button.Group>
+      <Button.Group fluid type={ButtonGroupTypesEnum.VERTICAL}>
+        <Button color={Colors.BEARISH_RED} onPress={action('Button is pressed!')} text='Remove'/>
+        <Button color={Colors.INTELLIGENT_SILVER_TINT} onPress={action('Button is pressed!')} text='Cancel'/>
+      </Button.Group>
+    </Info>
+    <Info description='A grouped button (compact).'>
+      <Button.Group compact type={ButtonGroupTypesEnum.HORIZONTAL}>
+        <Button color={Colors.BULLISH_GREEN} onPress={action('Button is pressed!')} text='Bull'/>
+        <Button color={Colors.INTELLIGENT_SILVER_TINT} onPress={action('Button is pressed!')} text='Normal'/>
+        <Button color={Colors.BEARISH_RED} onPress={action('Button is pressed!')} text='Bear'/>
       </Button.Group>
     </Info>
   </>

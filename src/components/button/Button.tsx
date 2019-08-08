@@ -1,18 +1,22 @@
 import Color from 'color';
 import { noop } from 'lodash-es';
 import React from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { Colors, Numbers, Sizes } from '../../constants';
 import {
   BG_TO_DARKEN,
-  BG_TO_LIGHTEN, BG_TO_OPACITY,
+  BG_TO_LIGHTEN,
+  BG_TO_OPACITY,
   LUMINOSITY_DARK,
-  LUMINOSITY_LIGHT, TEXT_TO_DARKEN, TEXT_TO_LIGHTEN
+  LUMINOSITY_LIGHT,
+  TEXT_TO_DARKEN,
+  TEXT_TO_LIGHTEN
 } from '../../constants/numbers';
 import Hoverable from '../hoverable';
 import Text from '../text';
 import Group from './Group';
 import * as Types from './type';
+import { ButtonTypesEnum, ButtonTypeValue } from './type';
 
 class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
   static defaultProps: Types.ButtonProps = {
@@ -36,6 +40,7 @@ class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
     const {
       centered,
       color,
+      compact,
       disabled,
       fluid,
       hoverable,
@@ -70,7 +75,7 @@ class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
                 disabled={disabled}
                 onPress={onPress}
                 style={[
-                  styles.buttonContainer,
+                  styles.buttonContainer(compact ? ButtonTypesEnum.COMPACT : undefined),
                   {
                     alignSelf,
                     backgroundColor: isHovered && hoverable && !disabled
@@ -91,14 +96,12 @@ class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
   }
 }
 
-const styles = StyleSheet.create({
-  buttonContainer: {
-    borderRadius: 2,
+const styles = {
+  buttonContainer: (type: Types.ButtonTypesEnum = ButtonTypesEnum.NORMAL) => ({
+    borderRadius: 3,
     margin: 5,
-    minWidth: 100,
-    paddingHorizontal: 15,
-    paddingVertical: 5
-  }
-});
+    ...ButtonTypeValue[type].buttonContainer
+  })
+};
 
 export default Button;

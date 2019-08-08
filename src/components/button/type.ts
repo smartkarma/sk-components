@@ -22,8 +22,30 @@ export interface ButtonProps {
 export interface ButtonState {
 }
 
-export type ButtonTypes = 'normal' | 'compact' | 'fluid';
+export type ButtonTypes = 'normal' | 'compact' | 'fluid' | 'basic';
 export type ButtonGroupTypes = 'vertical' | 'horizontal';
+
+export const ButtonTypeValue = {
+  basic: {
+    buttonContainer: {
+
+    }
+  },
+  compact: {
+    buttonContainer: {
+      minWidth: 0,
+      paddingHorizontal: 10,
+      paddingVertical: 5
+    }
+  },
+  normal: {
+    buttonContainer: {
+      minWidth: 120,
+      paddingHorizontal: 30,
+      paddingVertical: 8
+    }
+  }
+};
 
 export enum ButtonTypesEnum {
   COMPACT = 'compact',
@@ -40,6 +62,7 @@ export enum ButtonGroupTypesEnum {
 export interface ButtonGroupProps {
   centered?: boolean;
   children?: any;
+  compact?: boolean;
   componentId?: string;
   fluid?: boolean;
   hoverable?: boolean;
