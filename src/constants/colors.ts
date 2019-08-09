@@ -1,5 +1,5 @@
 export const
-  WHITE: string = '#fff',
+  WHITE: string = '#ffffff',
   SMART_TEAL: string = '#24a9a7',
   SMART_TEAL_TINT: string = '#e5f4f4',
   NEARLY_WHITE: string = '#eeeeee',

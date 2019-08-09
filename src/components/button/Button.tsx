@@ -57,7 +57,7 @@ class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
     // Color
     const backgroundColorAdvanced: any = new Color(color);
     const backgroundColorLuminosity = backgroundColorAdvanced.luminosity();
-    const isBackgroundLight =  backgroundColorLuminosity >= LUMINOSITY_LIGHT;
+    const isBackgroundLight = backgroundColorLuminosity >= LUMINOSITY_LIGHT;
     const backgroundColorThemed: string = disabled ? backgroundColorAdvanced.fade(BG_TO_OPACITY) : backgroundColorAdvanced.string();
     const backgroundColorHovered: string = backgroundColorAdvanced.darken(BG_TO_DARKER);
     const backgroundColorClicked: string = backgroundColorAdvanced.darken(BG_TO_DARKEN);
@@ -77,7 +77,7 @@ class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
             return (
               <TouchableHighlight
                 activeOpacity={1}
-                underlayColor={hoverable ? backgroundColorClicked : backgroundColorHovered}
+                underlayColor={(hoverable ? backgroundColorClicked : backgroundColorHovered).toString()}
                 disabled={disabled}
                 onPress={onPress}
                 onLongPress={onLongPress}
@@ -85,16 +85,21 @@ class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
                   styles.buttonContainer(compact ? ButtonTypesEnum.COMPACT : undefined),
                   {
                     alignSelf,
-                    backgroundColor: isHovered && !disabled
+                    backgroundColor: (isHovered && !disabled
                       ? isPressing ? backgroundColorClicked : hoverable ? backgroundColorHovered : backgroundColorThemed
-                      : backgroundColorThemed,
+                      : backgroundColorThemed).toString()
                   },
                   style
                 ]}
               >
-                <Text centered weight={textWeight} color={ isHovered && !disabled ? textColorHovered : textColorThemed }>{text}</Text>
+                <Text
+                  centered weight={textWeight}
+                  color={(isHovered && !disabled ? textColorHovered : textColorThemed).toString()}
+                >
+                  {text}
+                </Text>
               </TouchableHighlight>
-            )
+            );
           }
         }
       </Hoverable>
