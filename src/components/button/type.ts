@@ -22,6 +22,12 @@ export interface ButtonProps {
 }
 
 export interface ButtonState {
+  alignSelf: string;
+  backgroundColorClicked: string;
+  backgroundColorHovered: string;
+  backgroundColorThemed: string;
+  textColorHovered: string;
+  textColorThemed: string;
 }
 
 export type ButtonTypes = 'normal' | 'compact' | 'fluid' | 'basic';

@@ -19,4 +19,8 @@ export interface Props {
 }
 
 export interface State {
+  alignSelf: string;
+  color: any;
+  fontFamily: string;
+  fontSize: number;
 }

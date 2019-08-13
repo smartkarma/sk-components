@@ -2,6 +2,7 @@ import React from 'react';
 import { Animated } from 'react-native';
 import { Colors, Fonts, Sizes } from '../../constants';
 import { HOVERING_DURATION } from '../../constants/numbers';
+import { getGeneralPosition } from '../../utils/position';
 import * as Types from './type';
 
 export default class Text extends React.Component<Types.Props, Types.State> {
@@ -21,6 +22,35 @@ export default class Text extends React.Component<Types.Props, Types.State> {
 
   animHoveringColorValue = new Animated.Value(0);
   private rootComponent: any;
+
+  constructor(props: Types.Props) {
+    super(props);
+    const {
+      color,
+      colorHover,
+      colorTint,
+      centered,
+      disabled,
+      hoverable,
+      rightAligned,
+      size,
+      tint,
+      type,
+      weight,
+    } = props;
+    const textColor = tint ? colorTint : color;
+    const hoveringColor = this.animHoveringColorValue.interpolate({
+      inputRange: [0, 1],
+      outputRange: [textColor, colorHover]
+    });
+
+    this.state = {
+      alignSelf: getGeneralPosition({centered, rightAligned}),
+      color: disabled ? Colors.INACTIVE_GREY : hoverable ? hoveringColor : textColor,
+      fontFamily: `${type}${Fonts.FamilyWeightEnum[weight]}`,
+      fontSize: Sizes.TypesValue[size],
+    }
+  }
 
   setNativeProps(nativeProps) {
     this.rootComponent.setNativeProps(nativeProps)
@@ -42,26 +72,18 @@ export default class Text extends React.Component<Types.Props, Types.State> {
 
   render() {
     const {
-      centered,
       children,
-      color,
-      colorHover,
-      colorTint,
-      disabled,
-      type,
-      hoverable,
       onPress,
-      rightAligned,
-      size,
       style,
-      tint,
-      weight
     } = this.props;
-    const textColor = tint ? colorTint : color;
-    const hoveringColor = this.animHoveringColorValue.interpolate({
-      inputRange: [0, 1],
-      outputRange: [textColor, colorHover]
-    });
+
+    const {
+      alignSelf,
+      color,
+      fontFamily,
+      fontSize
+    } = this.state;
+
     return (
       <Animated.Text
         ref={component => this.rootComponent = component}
@@ -69,10 +91,10 @@ export default class Text extends React.Component<Types.Props, Types.State> {
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
         style={[
-          { alignSelf: centered ? 'center' : rightAligned ? 'flex-end' : 'flex-start'},
-          { color: disabled ? Colors.INACTIVE_GREY : hoverable ? hoveringColor : textColor },
-          { fontFamily: `${type}${Fonts.FamilyWeightEnum[weight]}` },
-          { fontSize: Sizes.TypesValue[size] },
+          { alignSelf },
+          { color },
+          { fontFamily },
+          { fontSize },
           style
         ]}
       >

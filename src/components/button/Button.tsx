@@ -11,6 +11,7 @@ import {
   TEXT_TO_DARKER, TEXT_TO_LIGHTEN,
   TEXT_TO_LIGHTER
 } from '../../constants/numbers';
+import { getGeneralPosition } from '../../utils/position';
 import Hoverable from '../hoverable';
 import Text from '../text';
 import Group from './Group';
@@ -37,39 +38,64 @@ class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
   public static Types = Types.ButtonTypesEnum;
   public static Group = Group;
 
-  render() {
+  constructor(props: Types.ButtonProps) {
+    super(props);
     const {
       centered,
       color,
-      compact,
       disabled,
       fluid,
-      hoverable,
-      onLongPress,
-      onPress,
       rightAligned,
-      style,
-      text,
       textColor,
-      textWeight
-    } = this.props;
+    } = props;
 
     // Color
     const backgroundColorAdvanced: any = new Color(color);
     const backgroundColorLuminosity = backgroundColorAdvanced.luminosity();
     const isBackgroundLight = backgroundColorLuminosity >= LUMINOSITY_LIGHT;
-    const backgroundColorThemed: string = disabled ? backgroundColorAdvanced.fade(BG_TO_OPACITY) : backgroundColorAdvanced.string();
-    const backgroundColorHovered: string = backgroundColorAdvanced.darken(BG_TO_DARKER);
-    const backgroundColorClicked: string = backgroundColorAdvanced.darken(BG_TO_DARKEN);
+    const backgroundColorThemed: string = (disabled ? backgroundColorAdvanced.fade(BG_TO_OPACITY) : backgroundColorAdvanced).toString();
+    const backgroundColorHovered: string = (backgroundColorAdvanced.darken(BG_TO_DARKER)).toString();
+    const backgroundColorClicked: string = (backgroundColorAdvanced.darken(BG_TO_DARKEN)).toString();
 
     const textColorAdvanced: any = new Color(textColor ? textColor : isBackgroundLight ? Colors.SUBTLE_BLACK : Colors.WHITE);
-    const textColorThemed: string = isBackgroundLight
+    const textColorThemed: string = (isBackgroundLight
       ? textColorAdvanced.lighten(TEXT_TO_LIGHTER)
-      : textColorAdvanced.darken(TEXT_TO_DARKER);
-    const textColorHovered: string = isBackgroundLight ? textColorAdvanced.darken(TEXT_TO_DARKEN) : textColorAdvanced.lighten(TEXT_TO_LIGHTEN);
+      : textColorAdvanced.darken(TEXT_TO_DARKER)).toString();
+    const textColorHovered: string = (isBackgroundLight ? textColorAdvanced.darken(TEXT_TO_DARKEN) : textColorAdvanced.lighten(TEXT_TO_LIGHTEN)).toString();
 
     // Position
-    const alignSelf: any = centered ? 'center' : rightAligned ? 'flex-end' : fluid ? undefined : 'flex-start';
+    const alignSelf: any = getGeneralPosition({centered, fluid, rightAligned});
+
+    this.state = {
+      alignSelf,
+      backgroundColorClicked,
+      backgroundColorHovered,
+      backgroundColorThemed,
+      textColorHovered,
+      textColorThemed,
+    }
+  }
+
+  render() {
+    const {
+      compact,
+      disabled,
+      hoverable,
+      onLongPress,
+      onPress,
+      style,
+      text,
+      textWeight
+    } = this.props;
+
+    const {
+      alignSelf,
+      backgroundColorClicked,
+      backgroundColorHovered,
+      backgroundColorThemed,
+      textColorHovered,
+      textColorThemed,
+    } = this.state;
     return (
       <Hoverable>
         {
@@ -77,7 +103,7 @@ class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
             return (
               <TouchableHighlight
                 activeOpacity={1}
-                underlayColor={(hoverable ? backgroundColorClicked : backgroundColorHovered).toString()}
+                underlayColor={hoverable ? backgroundColorClicked : backgroundColorHovered}
                 disabled={disabled}
                 onPress={onPress}
                 onLongPress={onLongPress}
@@ -85,16 +111,16 @@ class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
                   styles.buttonContainer(compact ? ButtonTypesEnum.COMPACT : undefined),
                   {
                     alignSelf,
-                    backgroundColor: (isHovered && !disabled
+                    backgroundColor: isHovered && !disabled
                       ? isPressing ? backgroundColorClicked : hoverable ? backgroundColorHovered : backgroundColorThemed
-                      : backgroundColorThemed).toString()
+                      : backgroundColorThemed
                   },
                   style
                 ]}
               >
                 <Text
                   centered weight={textWeight}
-                  color={(isHovered && !disabled ? textColorHovered : textColorThemed).toString()}
+                  color={isHovered && !disabled ? textColorHovered : textColorThemed}
                 >
                   {text}
                 </Text>
