@@ -3,7 +3,6 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Foundation from 'react-native-vector-icons/Foundation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -19,7 +18,6 @@ export const Family = {
   [TypesEnum.EVIL_ICONS]: EvilIcons,
   [TypesEnum.FEATHER]: Feather,
   [TypesEnum.FONT_AWESOME]: FontAwesome,
-  [TypesEnum.FONT_AWESOME_5]: FontAwesome5,
   [TypesEnum.FOUNDATION]: Foundation,
   [TypesEnum.IONICONS]: Ionicons,
   [TypesEnum.MATERIAL_ICONS]: MaterialIcons,

@@ -17,7 +17,6 @@ export enum TypesEnum {
   EVIL_ICONS = 'EvilIcons',
   FEATHER = 'Feather',
   FONT_AWESOME = 'FontAwesome',
-  FONT_AWESOME_5 = 'FontAwesome5',
   FOUNDATION = 'Foundation',
   IONICONS = 'Ionicons',
   MATERIAL_ICONS = 'MaterialIcons',
