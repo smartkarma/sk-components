@@ -12,7 +12,7 @@ import SimpleLineIcons from 'react-native-vector-icons/dist/SimpleLineIcons';
 import Zocial from 'react-native-vector-icons/dist/Zocial';
 import { TypesEnum } from '../components/icon/type';
 
-export const Icons = {
+export const Family = {
   [TypesEnum.ANT_DESIGN]: AntDesign,
   [TypesEnum.ENTYPO]: Entypo,
   [TypesEnum.EVIL_ICONS]: EvilIcons,
