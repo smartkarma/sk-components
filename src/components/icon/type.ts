@@ -1,14 +1,13 @@
-import { ViewStyle } from 'react-native';
 import { Sizes } from '../../constants';
+import { IPosition, IVariants } from '../../constants/general';
 
-export interface Props {
+export interface Props extends IPosition, IVariants<Sizes.Types, TypesEnum> {
   color: string;
-  size: Sizes.Types;
-  style?: ViewStyle;
-  type: TypesEnum;
+  style?: any;
 }
 
 export interface State {
+  alignSelf: string;
 }
 
 export enum TypesEnum {
