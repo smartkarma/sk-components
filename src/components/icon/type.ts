@@ -1,12 +1,12 @@
 import { Sizes } from '../../constants';
 import { IPosition, IVariants } from '../../constants/general';
 
-export interface Props extends IPosition, IVariants<Sizes.Types, TypesEnum> {
+export interface IconProps extends IPosition, IVariants<Sizes.Types, TypesEnum> {
   color: string;
   style?: any;
 }
 
-export interface State {
+export interface IconState {
   alignSelf: string;
 }
 

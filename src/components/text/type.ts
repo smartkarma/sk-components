@@ -1,24 +1,21 @@
 import { ViewStyle } from 'react-native';
 import { Fonts, Sizes } from '../../constants';
+import { IPosition, IVariants } from '../../constants/general';
 
-export interface Props {
-  centered?: boolean;
+export interface TextProps extends IPosition, IVariants<Sizes.Types, Fonts.Family> {
   componentId?: string;
   color: string;
   colorHover: string;
   colorTint: string;
   disabled?: boolean;
-  type?: Fonts.Family;
   hoverable?: boolean;
-  rightAligned?: boolean;
-  size: Sizes.Types;
   style?: ViewStyle;
   tint?: boolean;
   weight: number;
   onPress?: () => void;
 }
 
-export interface State {
+export interface TextState {
   alignSelf: string;
   color: any;
   fontFamily: string;

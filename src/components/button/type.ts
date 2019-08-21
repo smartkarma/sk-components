@@ -1,24 +1,20 @@
 import { ViewStyle } from 'react-native';
 import { Sizes } from '../../constants';
+import { IPosition, IVariants } from '../../constants/general';
 
 // Button
-export interface ButtonProps {
-  centered?: boolean;
+export interface ButtonProps extends IPosition, IVariants<Sizes.Types, ButtonTypes> {
   compact?: boolean;
   componentId?: string;
   color?: string;
   disabled?: boolean;
-  fluid: boolean | undefined;
   hoverable?: boolean | undefined;
   onPress?: () => void;
   onLongPress?: () => void;
-  rightAligned?: boolean;
-  size?: Sizes.Types;
   style?: any;
   text?: string;
   textColor?: string;
   textWeight?: number;
-  type?: ButtonTypes;
 }
 
 export interface ButtonState {

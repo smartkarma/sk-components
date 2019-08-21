@@ -5,8 +5,8 @@ import { Icons } from '../../constants';
 import { getGeneralPosition } from '../../utils/position';
 import * as Types from './type';
 
-export default class Icon extends React.Component<Types.Props, Types.State> {
-  static defaultProps: Types.Props = {
+export default class Icon extends React.Component<Types.IconProps, Types.IconState> {
+  static defaultProps: Types.IconProps = {
     centered: false,
     color: Colors.WHITE,
     fluid: false,
@@ -15,7 +15,7 @@ export default class Icon extends React.Component<Types.Props, Types.State> {
     type: Types.TypesEnum.FONT_AWESOME
   };
 
-  constructor(props: Types.Props) {
+  constructor(props: Types.IconProps) {
     super(props);
     const {
       centered,

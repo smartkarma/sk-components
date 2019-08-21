@@ -1,6 +1,6 @@
 export interface IPosition {
   centered?: boolean;
-  fluid?: boolean;
+  fluid?: boolean | undefined;
   rightAligned?: boolean;
 }
 

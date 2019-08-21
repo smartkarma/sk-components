@@ -6,8 +6,8 @@ import { onlyWeb } from '../../utils/helper';
 import { getGeneralPosition } from '../../utils/position';
 import * as Types from './type';
 
-export default class Text extends React.Component<Types.Props, Types.State> {
-  static defaultProps: Types.Props = {
+export default class Text extends React.Component<Types.TextProps, Types.TextState> {
+  static defaultProps: Types.TextProps = {
     centered: false,
     color: Colors.SECONDARY,
     colorHover: Colors.PRIMARY,
@@ -24,7 +24,7 @@ export default class Text extends React.Component<Types.Props, Types.State> {
   animHoveringColorValue = new Animated.Value(0);
   private rootComponent: any;
 
-  constructor(props: Types.Props) {
+  constructor(props: Types.TextProps) {
     super(props);
     const {
       color,
