@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { Info } from '../src';
+import { Icon, Info } from '../src';
 
 const stories = storiesOf('Components', module);
 
@@ -11,7 +11,7 @@ stories.add('Icon', () => (
       description='This component allows you to use Icon component with various types.'
     />
     <Info description='A standard icon.'>
-
+      <Icon />
     </Info>
   </>
 ));

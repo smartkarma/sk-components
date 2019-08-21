@@ -10,12 +10,12 @@ module.exports = ({ config }) => {
   });
   config.module.rules.push({
     test: /\.ttf$/,
-    loader: require.resolve("url-loader"), // or directly file-loader
+    loader: require.resolve("url-loader"),
     include: path.resolve(__dirname, "../", "node_modules/react-native-vector-icons")
   });
   config.resolve.alias = {
     "react-native": "react-native-web"
   };
-  config.resolve.extensions.push(".ts", ".tsx");
+  config.resolve.extensions.push(".web.ts", ".web.tsx", ".ts", ".tsx");
   return config;
 };

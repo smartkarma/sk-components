@@ -1,7 +1,8 @@
 import React from 'react';
-import { Animated } from 'react-native';
+import { Animated, TouchableOpacity } from 'react-native';
 import { Colors, Fonts, Sizes } from '../../constants';
 import { HOVERING_DURATION } from '../../constants/numbers';
+import { onlyWeb } from '../../utils/helper';
 import { getGeneralPosition } from '../../utils/position';
 import * as Types from './type';
 
@@ -85,21 +86,22 @@ export default class Text extends React.Component<Types.Props, Types.State> {
     } = this.state;
 
     return (
-      <Animated.Text
-        ref={component => this.rootComponent = component}
-        onPress={onPress}
-        onMouseEnter={this.onMouseEnter}
-        onMouseLeave={this.onMouseLeave}
-        style={[
-          { alignSelf },
-          { color },
-          { fontFamily },
-          { fontSize },
-          style
-        ]}
-      >
-        {children}
-      </Animated.Text>
+      <TouchableOpacity activeOpacity={1} onPress={onPress}>
+        <Animated.Text
+          ref={component => this.rootComponent = component}
+          onMouseEnter={onlyWeb(this.onMouseEnter)}
+          onMouseLeave={onlyWeb(this.onMouseLeave)}
+          style={[
+            { alignSelf },
+            { color },
+            { fontFamily },
+            { fontSize },
+            style
+          ]}
+        >
+          {children}
+        </Animated.Text>
+      </TouchableOpacity>
     );
   }
 }

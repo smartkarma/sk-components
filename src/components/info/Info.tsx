@@ -34,6 +34,7 @@ export default class Info extends React.Component<Types.InfoProps, Types.InfoSta
 const styles = StyleSheet.create({
   componentContainer: {
     borderColor: Colors.INTELLIGENT_SILVER,
+    borderRadius: 5,
     borderStyle: 'dashed',
     borderWidth: .5,
     marginTop: 10

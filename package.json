@@ -1,6 +1,6 @@
 {
   "name": "sk-components",
-  "version": "0.0.2",
+  "version": "0.0.9",
   "description": "Smartkarma UI Kit",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -49,10 +49,12 @@
     "@types/jest": "^24.0.15",
     "@types/react": "^16.8.23",
     "@types/react-native": "^0.60.0",
+    "@types/react-native-vector-icons": "^6.4.1",
     "@types/react-native-web": "npm:@types/react-native@^0.60.2",
     "@types/storybook__addon-options": "^4.0.2",
     "@types/storybook__react": "^4.0.2",
     "babel-loader": "^8.0.6",
+    "file-loader": "^4.2.0",
     "husky": "^3.0.0",
     "jest": "^24.8.0",
     "prettier": "^1.18.2",
@@ -77,6 +79,7 @@
     "@types/react-native": "^0.60.0",
     "react": "^16.8.6",
     "react-native": "^0.59.9",
+    "react-native-vector-icons": "^6.6.0",
     "typescript": "^3.5.3"
   },
   "husky": {

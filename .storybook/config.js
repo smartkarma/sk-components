@@ -1,9 +1,15 @@
 import { addParameters, configure } from "@storybook/react";
 import { create } from "@storybook/theming";
 import { Colors } from "../src/constants";
-import '../src/index.css';
+import "../src/index.css";
 
 const req = require.context("../stories", true, /\.stories\.tsx$/);
+
+const iconFont = require("react-native-vector-icons/Fonts/FontAwesome.ttf");
+const iconFontStyles = `@font-face {
+  src: url('${iconFont}') format('truetype');
+  font-family: 'FontAwesome';
+}`;
 
 function loadStories() {
   req.keys().forEach(filename => req(filename));
@@ -24,3 +30,14 @@ addParameters({
 });
 
 configure(loadStories, module);
+
+// Create stylesheet
+const style = document.createElement("style");
+style.type = "text/css";
+if (style.styleSheet) {
+  style.styleSheet.cssText = iconFontStyles;
+} else {
+  style.appendChild(document.createTextNode(iconFontStyles));
+}
+// Inject stylesheet
+document.head.appendChild(style);
