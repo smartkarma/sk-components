@@ -8,7 +8,7 @@ import {
   BG_TO_DARKER,
   BG_TO_OPACITY,
   LUMINOSITY_LIGHT, TEXT_TO_DARKEN,
-  TEXT_TO_DARKER, TEXT_TO_LIGHTEN,
+  TEXT_TO_LIGHTEN,
   TEXT_TO_LIGHTER
 } from '../../constants/numbers';
 import { SizeTypesEnum } from '../../constants/sizes';
@@ -60,7 +60,7 @@ class Button extends React.Component<ButtonProps, ButtonState> {
     const textColorAdvanced: any = new Color(textColor ? textColor : isBackgroundLight ? Colors.SUBTLE_BLACK : Colors.WHITE);
     const textColorThemed: string = (isBackgroundLight
       ? textColorAdvanced.lighten(TEXT_TO_LIGHTER)
-      : textColorAdvanced.darken(TEXT_TO_DARKER)).toString();
+      : textColorAdvanced).toString();
     const textColorHovered: string = (isBackgroundLight ? textColorAdvanced.darken(TEXT_TO_DARKEN) : textColorAdvanced.lighten(TEXT_TO_LIGHTEN)).toString();
 
     // Position

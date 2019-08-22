@@ -9,7 +9,11 @@ import Title from '../title';
 import { ItemProps, ItemState } from './type'
 
 export default class Item extends React.Component<ItemProps, ItemState> {
-  static defaultProps = {};
+  static defaultProps: ItemProps = {
+    metadata: '',
+    subtitle: '',
+    title: ''
+  };
 
   render() {
     const {

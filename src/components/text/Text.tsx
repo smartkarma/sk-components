@@ -1,8 +1,9 @@
+import Color from 'color';
 import React from 'react';
 import { Animated } from 'react-native';
 import { Colors } from '../../constants';
 import { FontFamilyEnum, FontFamilyWeightEnum } from '../../constants/fonts';
-import { HOVERING_DURATION } from '../../constants/numbers';
+import { HOVERING_DURATION, TEXT_TO_DARKER } from '../../constants/numbers';
 import { SizeTypesEnum, SizeTypesValue } from '../../constants/sizes';
 import { onlyWeb } from '../../utils/helper';
 import { getGeneralPosition } from '../../utils/position';
@@ -12,8 +13,6 @@ export default class Text extends React.Component<TextProps, TextState> {
   static defaultProps: TextProps = {
     centered: false,
     color: Colors.SECONDARY,
-    colorHover: Colors.PRIMARY,
-    colorTint: Colors.SECONDARY_TINT,
     disabled: false,
     family: FontFamilyEnum.ROBOTO,
     hoverable: false,
@@ -21,7 +20,6 @@ export default class Text extends React.Component<TextProps, TextState> {
     onPress: undefined,
     rightAligned: false,
     size: SizeTypesEnum.SMALL,
-    tint: false,
     type: null,
     weight: 400,
   };
@@ -34,20 +32,20 @@ export default class Text extends React.Component<TextProps, TextState> {
     const {
       color,
       colorHover,
-      colorTint,
       centered,
       disabled,
       family,
       hoverable,
       rightAligned,
       size,
-      tint,
       weight,
     } = props;
-    const textColor = tint ? colorTint : color;
+    const textColorAdvanced: any = new Color(color);
+    const textColor = color;
+    const textColorHover = textColorAdvanced.darken(TEXT_TO_DARKER).toString();
     const hoveringColor = this.animHoveringColorValue.interpolate({
       inputRange: [0, 1],
-      outputRange: [textColor, colorHover]
+      outputRange: [textColor, colorHover || textColorHover]
     });
 
     this.state = {

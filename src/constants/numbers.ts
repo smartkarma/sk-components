@@ -9,7 +9,7 @@ export const
   TEXT_TO_LIGHTEN: number = 0.9,
   BG_TO_DARKER: number = 0.1,
   BG_TO_DARKEN: number = 0.25,
-  TEXT_TO_DARKER: number = 0.05,
+  TEXT_TO_DARKER: number = 0.25,
   TEXT_TO_DARKEN: number = 0.5,
   BG_TO_OPACITY: number = 0.5,
   TOUCH_OPACITY: number = 0.6;
