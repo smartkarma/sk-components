@@ -15,14 +15,14 @@ import RobotoRegular from '../assets/fonts/Roboto-Regular.ttf';
 // @ts-ignore
 import RobotoThin from '../assets/fonts/Roboto-Thin.ttf';
 
-export type Family = 'PTSerif' | 'Roboto'
-export enum FamilyEnum {
+export type FontFamily = 'PTSerif' | 'Roboto'
+export enum FontFamilyEnum {
   PT_SERIF = 'PTSerif',
   ROBOTO = 'Roboto'
 }
 
-export type FamilyWeight = 'Thin' | 'Light' | 'Regular' | 'Medium' | 'Bold' | 'Black'
-export const FamilyWeightEnum = {
+export type FontFamilyWeight = 'Thin' | 'Light' | 'Regular' | 'Medium' | 'Bold' | 'Black'
+export const FontFamilyWeightEnum = {
   100: 'Thin',
   300: 'Light',
   400: 'Regular',
@@ -31,7 +31,7 @@ export const FamilyWeightEnum = {
   900: 'Black',
 };
 
-export type FamilyTypes = 'PTSerifRegular' | 'PTSerifBold' | 'RobotoThin' | 'RobotoLight' | 'RobotoRegular' | 'RobotoMedium' | 'RobotoBold' | 'RobotoBlack'
+export type FontFamilyTypes = 'PTSerifRegular' | 'PTSerifBold' | 'RobotoThin' | 'RobotoLight' | 'RobotoRegular' | 'RobotoMedium' | 'RobotoBold' | 'RobotoBlack'
 
 export const Fonts = {
   'PTSerifBold': require('../assets/fonts/PTSerif-Bold.ttf'),

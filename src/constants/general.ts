@@ -4,7 +4,9 @@ export interface IPosition {
   rightAligned?: boolean;
 }
 
-export interface IVariants<Size, Type> {
+export interface IVariants<Size, Type, Family> {
   size: Size;
   type: Type;
+  family: Family;
 }
+

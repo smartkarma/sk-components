@@ -3,34 +3,38 @@ import { View } from 'react-native';
 import { Colors, Sizes } from '../../constants';
 import { Icons } from '../../constants';
 import { getGeneralPosition } from '../../utils/position';
-import * as Types from './type';
+import { IconFamilyEnum, IconProps, IconState, IconTypesEnum } from './type';
 
-export default class Icon extends React.Component<Types.IconProps, Types.IconState> {
-  static defaultProps: Types.IconProps = {
+export default class Icon extends React.Component<IconProps, IconState> {
+  static defaultProps: IconProps = {
     centered: false,
     color: Colors.PRIMARY,
+    family: IconFamilyEnum.FONT_AWESOME,
     fluid: false,
     name: 'diamond',
     rightAligned: false,
     size: 'small',
-    type: Types.TypesEnum.FONT_AWESOME
+    type: IconTypesEnum.NORMAL
   };
 
-  constructor(props: Types.IconProps) {
+  public static Family = IconFamilyEnum;
+  public static Types = IconTypesEnum;
+
+  constructor(props: IconProps) {
     super(props);
     const {
       centered,
       fluid,
       rightAligned,
       size,
-      type
+      family
     } = props;
 
-    const CurrentIcon = Icons.Family[type];
+    const CurrentIcon = Icons.Family[family];
 
     // Position
     const alignSelf: any = getGeneralPosition({ centered, fluid, rightAligned });
-    const iconSize: number = Sizes.IconTypesValue[size];
+    const iconSize: number = Sizes.IconSizeTypesValue[size];
     this.state = {
       CurrentIcon,
       alignSelf,

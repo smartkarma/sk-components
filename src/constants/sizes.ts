@@ -1,5 +1,5 @@
-export type Types = 'tiny' | 'mini' | 'small' | 'large' | 'huge' | 'massive'
-export enum TypesEnum {
+export type SizeTypes = 'tiny' | 'mini' | 'small' | 'large' | 'huge' | 'massive'
+export enum SizeTypesEnum {
   TINY = 'tiny',
   MINI = 'mini',
   SMALL = 'small',
@@ -8,20 +8,20 @@ export enum TypesEnum {
   MASSIVE = 'massive',
 }
 
-export const TypesValue = {
-  [TypesEnum.TINY]: 12.57142864,
-  [TypesEnum.MINI]: 13.71428576,
-  [TypesEnum.SMALL]: 16,
-  [TypesEnum.LARGE]: 18.28571424,
-  [TypesEnum.HUGE]: 22.85714288,
-  [TypesEnum.MASSIVE]: 27.42857136,
+export const SizeTypesValue = {
+  [SizeTypesEnum.TINY]: 12.57142864,
+  [SizeTypesEnum.MINI]: 13.71428576,
+  [SizeTypesEnum.SMALL]: 16,
+  [SizeTypesEnum.LARGE]: 18.28571424,
+  [SizeTypesEnum.HUGE]: 22.85714288,
+  [SizeTypesEnum.MASSIVE]: 27.42857136,
 };
 
-export const IconTypesValue = {
-  [TypesEnum.TINY]: 10,
-  [TypesEnum.MINI]: 15,
-  [TypesEnum.SMALL]: 20,
-  [TypesEnum.LARGE]: 30,
-  [TypesEnum.HUGE]: 40,
-  [TypesEnum.MASSIVE]: 50,
+export const IconSizeTypesValue = {
+  [SizeTypesEnum.TINY]: 10,
+  [SizeTypesEnum.MINI]: 15,
+  [SizeTypesEnum.SMALL]: 20,
+  [SizeTypesEnum.LARGE]: 30,
+  [SizeTypesEnum.HUGE]: 40,
+  [SizeTypesEnum.MASSIVE]: 50,
 };

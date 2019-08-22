@@ -2,10 +2,10 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Colors, Sizes } from '../../constants';
 import Text from '../text';
-import * as Types from './type'
+import { InfoProps, InfoState } from './type'
 
-export default class Info extends React.Component<Types.InfoProps, Types.InfoState> {
-  static defaultProps: Types.InfoProps = {
+export default class Info extends React.Component<InfoProps, InfoState> {
+  static defaultProps: InfoProps = {
     description: 'All about your awesome component pieces here',
   };
 
@@ -17,8 +17,8 @@ export default class Info extends React.Component<Types.InfoProps, Types.InfoSta
     } = this.props;
     return (
       <View style={[styles.container]}>
-        { title && <Text size={Sizes.TypesEnum.LARGE} weight={700}>{title}</Text>}
-        <Text size={Sizes.TypesEnum.MINI} color={Colors.INTELLIGENT_SILVER} type='PTSerif'>{description}</Text>
+        { title && <Text size={Sizes.SizeTypesEnum.LARGE} weight={700}>{title}</Text>}
+        <Text size={Sizes.SizeTypesEnum.MINI} color={Colors.INTELLIGENT_SILVER} family='PTSerif'>{description}</Text>
         {
           children && (
             <View style={[styles.componentContainer]}>

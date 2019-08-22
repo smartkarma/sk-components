@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Props, State } from './bluprint_type'
+import { CompProps, CompState } from './bluprint_type'
 
-export default class Blueprint extends React.Component<Props, State> {
+export default class Blueprint extends React.Component<CompProps, CompState> {
   static defaultProps = {};
 
   render() {

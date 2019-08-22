@@ -1,32 +1,35 @@
 import React from 'react';
 import { Animated } from 'react-native';
-import { Colors, Fonts, Sizes } from '../../constants';
+import { Colors } from '../../constants';
+import { FontFamilyEnum, FontFamilyWeightEnum } from '../../constants/fonts';
 import { HOVERING_DURATION } from '../../constants/numbers';
+import { SizeTypesEnum, SizeTypesValue } from '../../constants/sizes';
 import { onlyWeb } from '../../utils/helper';
 import { getGeneralPosition } from '../../utils/position';
-import * as Types from './type';
+import { TextProps, TextState } from './type';
 
-export default class Text extends React.Component<Types.TextProps, Types.TextState> {
-  static defaultProps: Types.TextProps = {
+export default class Text extends React.Component<TextProps, TextState> {
+  static defaultProps: TextProps = {
     centered: false,
     color: Colors.SECONDARY,
     colorHover: Colors.PRIMARY,
     colorTint: Colors.SECONDARY_TINT,
     disabled: false,
+    family: FontFamilyEnum.ROBOTO,
     hoverable: false,
     onLongPress: undefined,
     onPress: undefined,
     rightAligned: false,
-    size: Sizes.TypesEnum.SMALL,
+    size: SizeTypesEnum.SMALL,
     tint: false,
-    type: Fonts.FamilyEnum.ROBOTO,
+    type: null,
     weight: 400,
   };
 
   animHoveringColorValue = new Animated.Value(0);
   private rootComponent: any;
 
-  constructor(props: Types.TextProps) {
+  constructor(props: TextProps) {
     super(props);
     const {
       color,
@@ -34,11 +37,11 @@ export default class Text extends React.Component<Types.TextProps, Types.TextSta
       colorTint,
       centered,
       disabled,
+      family,
       hoverable,
       rightAligned,
       size,
       tint,
-      type,
       weight,
     } = props;
     const textColor = tint ? colorTint : color;
@@ -50,8 +53,8 @@ export default class Text extends React.Component<Types.TextProps, Types.TextSta
     this.state = {
       alignSelf: getGeneralPosition({centered, rightAligned}),
       color: disabled ? Colors.INACTIVE_GREY : hoverable ? hoveringColor : textColor,
-      fontFamily: `${type}${Fonts.FamilyWeightEnum[weight]}`,
-      fontSize: Sizes.TypesValue[size],
+      fontFamily: `${family}${FontFamilyWeightEnum[weight]}`,
+      fontSize: SizeTypesValue[size],
     }
   }
 

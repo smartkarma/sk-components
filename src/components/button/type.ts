@@ -1,10 +1,9 @@
 import { ViewStyle } from 'react-native';
-import { Sizes } from '../../constants';
 import { IPosition, IVariants } from '../../constants/general';
+import { SizeTypes } from '../../constants/sizes';
 
 // Button
-export interface ButtonProps extends IPosition, IVariants<Sizes.Types, ButtonTypes> {
-  compact?: boolean;
+export interface ButtonProps extends IPosition, IVariants<SizeTypes, ButtonTypes, null> {
   componentId?: string;
   color?: string;
   disabled?: boolean;
@@ -26,15 +25,10 @@ export interface ButtonState {
   textColorThemed: string;
 }
 
-export type ButtonTypes = 'normal' | 'compact' | 'fluid' | 'basic';
-export type ButtonGroupTypes = 'vertical' | 'horizontal';
+export type ButtonTypes = 'compact' | 'normal';
+export type ButtonGroupTypes = 'horizontal' | 'vertical';
 
 export const ButtonTypeValue = {
-  basic: {
-    buttonContainer: {
-
-    }
-  },
   compact: {
     buttonContainer: {
       minWidth: 0,
@@ -53,7 +47,6 @@ export const ButtonTypeValue = {
 
 export enum ButtonTypesEnum {
   COMPACT = 'compact',
-  FLUID = 'fluid',
   NORMAL = 'normal'
 }
 
@@ -64,6 +57,7 @@ export enum ButtonGroupTypesEnum {
 
 // ButtonGroup
 export interface ButtonGroupProps {
+  buttonType?: ButtonTypes;
   centered?: boolean;
   children?: any;
   compact?: boolean;

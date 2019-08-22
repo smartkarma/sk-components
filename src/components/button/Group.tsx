@@ -1,18 +1,21 @@
 import { merge } from 'lodash-es';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { ButtonProps } from './type';
-import * as Types from './type';
+import {
+  ButtonGroupProps, ButtonGroupState, ButtonGroupTypesEnum,
+  ButtonProps
+} from './type';
 
-export default class Group extends React.Component<Types.ButtonGroupProps, Types.ButtonGroupState> {
-  static defaultProps: Types.ButtonGroupProps = {
-    type: Types.ButtonGroupTypesEnum.VERTICAL
+export default class Group extends React.Component<ButtonGroupProps, ButtonGroupState> {
+  static defaultProps: ButtonGroupProps = {
+    type: ButtonGroupTypesEnum.VERTICAL
   };
 
-  public static Types = Types.ButtonGroupTypesEnum;
+  public static Types = ButtonGroupTypesEnum;
 
   render() {
     const {
+      buttonType,
       centered,
       type,
       fluid,
@@ -20,7 +23,7 @@ export default class Group extends React.Component<Types.ButtonGroupProps, Types
       children
     } = this.props;
 
-    const isHorizontal = type === Types.ButtonGroupTypesEnum.HORIZONTAL;
+    const isHorizontal = type === ButtonGroupTypesEnum.HORIZONTAL;
     return (
       <View style={[
         styles.buttonGroupContainer,
@@ -31,14 +34,14 @@ export default class Group extends React.Component<Types.ButtonGroupProps, Types
       ]}>
         {
           React.Children.map(children, (child: React.ReactElement<ButtonProps>, i) => {
-            const marginTop = type === Types.ButtonGroupTypesEnum.HORIZONTAL ? undefined : i !== 0 ? 0 : undefined;
-            const marginLeft = type === Types.ButtonGroupTypesEnum.HORIZONTAL && i !== 0 ? 0 : undefined;
-            const groupProps = {...this.props};
+            const marginTop = type === ButtonGroupTypesEnum.HORIZONTAL ? undefined : i !== 0 ? 0 : undefined;
+            const marginLeft = type === ButtonGroupTypesEnum.HORIZONTAL && i !== 0 ? 0 : undefined;
+            const groupProps = {...this.props, type: buttonType};
             const childProps = {...child.props};
             return (
               React.cloneElement(child, {
                 ...merge(childProps, groupProps),
-                centered: type === Types.ButtonGroupTypesEnum.HORIZONTAL || centered,
+                centered: type === ButtonGroupTypesEnum.HORIZONTAL || centered,
                 style: {
                   flexGrow: fluid ? 1 : 0,
                   marginLeft,

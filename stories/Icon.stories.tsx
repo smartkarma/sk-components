@@ -2,6 +2,8 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { Icon, Info, Sizes } from '../src';
 
+const { SizeTypesEnum } = Sizes;
+
 const stories = storiesOf('Components', module);
 
 stories.add('Icon', () => (
@@ -14,12 +16,12 @@ stories.add('Icon', () => (
       <Icon />
     </Info>
     <Info description='A sized icon.'>
-      <Icon size={Sizes.TypesEnum.TINY}/>
-      <Icon size={Sizes.TypesEnum.MINI}/>
-      <Icon size={Sizes.TypesEnum.SMALL}/>
-      <Icon size={Sizes.TypesEnum.LARGE}/>
-      <Icon size={Sizes.TypesEnum.HUGE}/>
-      <Icon size={Sizes.TypesEnum.MASSIVE}/>
+      <Icon size={SizeTypesEnum.TINY}/>
+      <Icon size={SizeTypesEnum.MINI}/>
+      <Icon size={SizeTypesEnum.SMALL}/>
+      <Icon size={SizeTypesEnum.LARGE}/>
+      <Icon size={SizeTypesEnum.HUGE}/>
+      <Icon size={SizeTypesEnum.MASSIVE}/>
     </Info>
   </>
 ));

@@ -4,6 +4,9 @@ import React from 'react';
 import { Info, Text } from '../src';
 import { Colors, Fonts, Sizes } from '../src/constants';
 
+const { FontFamilyEnum } = Fonts;
+const { SizeTypesEnum } = Sizes;
+
 const stories = storiesOf('Components', module);
 
 stories.add('Text', () => (
@@ -31,16 +34,16 @@ stories.add('Text', () => (
       <Text weight={500}>Typography Roboto Medium</Text>
       <Text weight={700}>Typography Roboto Bold</Text>
       <Text weight={900}>Typography Roboto Black</Text>
-      <Text type={Fonts.FamilyEnum.PT_SERIF} weight={400}>Typography PT Serif Regular</Text>
-      <Text type={Fonts.FamilyEnum.PT_SERIF} weight={700}>Typography PT Serif Bold</Text>
+      <Text family={FontFamilyEnum.PT_SERIF} weight={400}>Typography PT Serif Regular</Text>
+      <Text family={FontFamilyEnum.PT_SERIF} weight={700}>Typography PT Serif Bold</Text>
     </Info>
     <Info description='A Sized text.'>
-      <Text size={Sizes.TypesEnum.TINY}>Tiny Text</Text>
-      <Text size={Sizes.TypesEnum.MINI}>Mini Text</Text>
-      <Text size={Sizes.TypesEnum.SMALL}>Small Text</Text>
-      <Text size={Sizes.TypesEnum.LARGE}>Large Text</Text>
-      <Text size={Sizes.TypesEnum.HUGE}>Huge Text</Text>
-      <Text size={Sizes.TypesEnum.MASSIVE}>Massive Text</Text>
+      <Text size={SizeTypesEnum.TINY}>Tiny Text</Text>
+      <Text size={SizeTypesEnum.MINI}>Mini Text</Text>
+      <Text size={SizeTypesEnum.SMALL}>Small Text</Text>
+      <Text size={SizeTypesEnum.LARGE}>Large Text</Text>
+      <Text size={SizeTypesEnum.HUGE}>Huge Text</Text>
+      <Text size={SizeTypesEnum.MASSIVE}>Massive Text</Text>
     </Info>
     <Info description='A Colored text.'>
       <Text color={Colors.PRIMARY}>Primary color</Text>

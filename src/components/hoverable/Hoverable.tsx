@@ -1,11 +1,11 @@
 import React from 'react';
 import { isHoverEnabled } from './hoverCapability';
-import * as Types from './type';
+import { HoverableProps, HoverableState } from './type';
 
-export default class Hoverable extends React.Component<Types.HoverableProps, Types.HoverableState> {
-  state: Types.HoverableState = { isHovered: false, showHover: true, isPressing: false };
+export default class Hoverable extends React.Component<HoverableProps, HoverableState> {
+  state: HoverableState = { isHovered: false, showHover: true, isPressing: false };
 
-  constructor(props: Types.HoverableProps) {
+  constructor(props: HoverableProps) {
     super(props);
     this._handleMouseEnter = this._handleMouseEnter.bind(this);
     this._handleMouseLeave = this._handleMouseLeave.bind(this);

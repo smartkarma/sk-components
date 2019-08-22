@@ -10,19 +10,19 @@ import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import Octicons from 'react-native-vector-icons/dist/Octicons';
 import SimpleLineIcons from 'react-native-vector-icons/dist/SimpleLineIcons';
 import Zocial from 'react-native-vector-icons/dist/Zocial';
-import { TypesEnum } from '../components/icon/type';
+import { IconFamilyEnum } from '../components/icon/type';
 
 export const Family = {
-  [TypesEnum.ANT_DESIGN]: AntDesign,
-  [TypesEnum.ENTYPO]: Entypo,
-  [TypesEnum.EVIL_ICONS]: EvilIcons,
-  [TypesEnum.FEATHER]: Feather,
-  [TypesEnum.FONT_AWESOME]: FontAwesome,
-  [TypesEnum.FOUNDATION]: Foundation,
-  [TypesEnum.IONICONS]: Ionicons,
-  [TypesEnum.MATERIAL_ICONS]: MaterialIcons,
-  [TypesEnum.MATERIAL_COMMUNITY_ICONS]: MaterialCommunityIcons,
-  [TypesEnum.OCTICONS]: Octicons,
-  [TypesEnum.ZOCIAL]: Zocial,
-  [TypesEnum.SIMPLE_LINE_ICONS]: SimpleLineIcons,
+  [IconFamilyEnum.ANT_DESIGN]: AntDesign,
+  [IconFamilyEnum.ENTYPO]: Entypo,
+  [IconFamilyEnum.EVIL_ICONS]: EvilIcons,
+  [IconFamilyEnum.FEATHER]: Feather,
+  [IconFamilyEnum.FONT_AWESOME]: FontAwesome,
+  [IconFamilyEnum.FOUNDATION]: Foundation,
+  [IconFamilyEnum.IONICONS]: Ionicons,
+  [IconFamilyEnum.MATERIAL_ICONS]: MaterialIcons,
+  [IconFamilyEnum.MATERIAL_COMMUNITY_ICONS]: MaterialCommunityIcons,
+  [IconFamilyEnum.OCTICONS]: Octicons,
+  [IconFamilyEnum.ZOCIAL]: Zocial,
+  [IconFamilyEnum.SIMPLE_LINE_ICONS]: SimpleLineIcons,
 };

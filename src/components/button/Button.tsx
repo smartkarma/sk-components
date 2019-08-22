@@ -2,7 +2,7 @@ import Color from 'color';
 import { noop } from 'lodash-es';
 import React from 'react';
 import { TouchableHighlight } from 'react-native';
-import { Colors, Sizes } from '../../constants';
+import { Colors } from '../../constants';
 import {
   BG_TO_DARKEN,
   BG_TO_DARKER,
@@ -11,34 +11,34 @@ import {
   TEXT_TO_DARKER, TEXT_TO_LIGHTEN,
   TEXT_TO_LIGHTER
 } from '../../constants/numbers';
+import { SizeTypesEnum } from '../../constants/sizes';
 import { getGeneralPosition } from '../../utils/position';
 import Hoverable from '../hoverable';
 import Text from '../text';
 import Group from './Group';
-import * as Types from './type';
-import { ButtonTypesEnum, ButtonTypeValue } from './type';
+import { ButtonProps, ButtonState, ButtonTypes, ButtonTypesEnum, ButtonTypeValue } from './type';
 
-class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
-  static defaultProps: Types.ButtonProps = {
+class Button extends React.Component<ButtonProps, ButtonState> {
+  static defaultProps: ButtonProps = {
     centered: false,
     color: Colors.PRIMARY,
-    compact: false,
     disabled: false,
+    family: null,
     fluid: false,
     hoverable: true,
     onLongPress: noop,
     onPress: noop,
     rightAligned: false,
-    size: Sizes.TypesEnum.SMALL,
+    size: SizeTypesEnum.SMALL,
     text: 'Press me!',
     textWeight: 500,
-    type: Types.ButtonTypesEnum.NORMAL
+    type: ButtonTypesEnum.NORMAL
   };
 
-  public static Types = Types.ButtonTypesEnum;
+  public static Types = ButtonTypesEnum;
   public static Group = Group;
 
-  constructor(props: Types.ButtonProps) {
+  constructor(props: ButtonProps) {
     super(props);
     const {
       centered,
@@ -78,14 +78,14 @@ class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
 
   render() {
     const {
-      compact,
       disabled,
       hoverable,
       onLongPress,
       onPress,
       style,
       text,
-      textWeight
+      textWeight,
+      type,
     } = this.props;
 
     const {
@@ -108,7 +108,7 @@ class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
                 onPress={onPress}
                 onLongPress={onLongPress}
                 style={[
-                  styles.buttonContainer(compact ? ButtonTypesEnum.COMPACT : undefined),
+                  styles.buttonContainer(type),
                   {
                     alignSelf,
                     backgroundColor: isHovered && !disabled
@@ -134,7 +134,7 @@ class Button extends React.Component<Types.ButtonProps, Types.ButtonState> {
 }
 
 const styles = {
-  buttonContainer: (type: Types.ButtonTypesEnum = ButtonTypesEnum.NORMAL) => ({
+  buttonContainer: (type: ButtonTypes = ButtonTypesEnum.NORMAL) => ({
     borderRadius: 3,
     margin: 5,
     ...ButtonTypeValue[type].buttonContainer

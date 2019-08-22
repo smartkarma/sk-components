@@ -1,7 +1,7 @@
-import { Sizes } from '../../constants';
 import { IPosition, IVariants } from '../../constants/general';
+import { SizeTypes } from '../../constants/sizes';
 
-export interface IconProps extends IPosition, IVariants<Sizes.Types, TypesEnum> {
+export interface IconProps extends IPosition, IVariants<SizeTypes, IconTypes, IconFamily> {
   color: string;
   name: string;
   style?: any;
@@ -13,7 +13,23 @@ export interface IconState {
   iconSize: number;
 }
 
-export enum TypesEnum {
+export type IconTypes = 'circle' | 'normal' | 'square';
+
+export enum IconTypesEnum {
+  CIRCLE = 'circle',
+  NORMAL = 'normal',
+  SQUARE = 'square',
+}
+
+export type IconFamily =
+  'AntDesign' | 'Entypo' |
+  'EvilIcons' | 'Feather' |
+  'FontAwesome' | 'Foundation' |
+  'Ionicons' | 'MaterialIcons' |
+  'MaterialCommunityIcons' | 'Octicons' |
+  'Zocial' | 'SimpleLineIcons'
+
+export enum IconFamilyEnum {
   ANT_DESIGN = 'AntDesign',
   ENTYPO = 'Entypo',
   EVIL_ICONS = 'EvilIcons',

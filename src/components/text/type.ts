@@ -1,8 +1,9 @@
 import { ViewStyle } from 'react-native';
-import { Fonts, Sizes } from '../../constants';
+import { FontFamily } from '../../constants/fonts';
 import { IPosition, IVariants } from '../../constants/general';
+import { SizeTypes } from '../../constants/sizes';
 
-export interface TextProps extends IPosition, IVariants<Sizes.Types, Fonts.Family> {
+export interface TextProps extends IPosition, IVariants<SizeTypes, null, FontFamily> {
   componentId?: string;
   color: string;
   colorHover: string;

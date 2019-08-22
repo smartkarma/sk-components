@@ -1,8 +1,8 @@
 import { ViewStyle } from 'react-native';
 
-export interface Props {
+export interface CompProps {
   style?: ViewStyle;
 }
 
-export interface State {
+export interface CompState {
 }
