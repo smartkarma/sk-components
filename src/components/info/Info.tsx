@@ -34,10 +34,11 @@ export default class Info extends React.Component<InfoProps, InfoState> {
 const styles = StyleSheet.create({
   componentContainer: {
     borderColor: Colors.INTELLIGENT_SILVER,
-    borderRadius: 5,
+    borderRadius: 1,
     borderStyle: 'dashed',
     borderWidth: .5,
-    marginTop: 10
+    marginTop: 10,
+    padding: 1,
   },
   container: {
     backgroundColor: Colors.WHITE,

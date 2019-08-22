@@ -1,12 +1,14 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Colors, Sizes } from '../../constants';
+import { Colors } from '../../constants';
 import { Icons } from '../../constants';
+import { IconSizeTypesValue } from '../../constants/sizes';
 import { getGeneralPosition } from '../../utils/position';
-import { IconFamilyEnum, IconProps, IconState, IconTypesEnum } from './type';
+import { IconFamilyEnum, IconProps, IconState, IconTypes, IconTypesEnum, IconTypeValue } from './type';
 
 export default class Icon extends React.Component<IconProps, IconState> {
   static defaultProps: IconProps = {
+    backgroundColor: Colors.SUBTLE_BLACK,
     centered: false,
     color: Colors.PRIMARY,
     family: IconFamilyEnum.FONT_AWESOME,
@@ -34,7 +36,8 @@ export default class Icon extends React.Component<IconProps, IconState> {
 
     // Position
     const alignSelf: any = getGeneralPosition({ centered, fluid, rightAligned });
-    const iconSize: number = Sizes.IconSizeTypesValue[size];
+    const iconSize: number = IconSizeTypesValue[size];
+
     this.state = {
       CurrentIcon,
       alignSelf,
@@ -44,9 +47,11 @@ export default class Icon extends React.Component<IconProps, IconState> {
 
   render() {
     const {
+      backgroundColor,
       color,
       name,
       style,
+      type,
     } = this.props;
     const {
       CurrentIcon,
@@ -57,7 +62,7 @@ export default class Icon extends React.Component<IconProps, IconState> {
     return (
       <View
         style={[
-          styles.iconContainer,
+          styles.container(type, iconSize, backgroundColor),
           {
             alignSelf
           },
@@ -71,5 +76,7 @@ export default class Icon extends React.Component<IconProps, IconState> {
 }
 
 const styles = {
-  iconContainer: {}
+  container: (type: IconTypes, size: number, color: string) => ({
+    ...IconTypeValue[type].container(size, color),
+  })
 };

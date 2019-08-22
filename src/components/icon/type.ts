@@ -2,6 +2,7 @@ import { IPosition, IVariants } from '../../constants/general';
 import { SizeTypes } from '../../constants/sizes';
 
 export interface IconProps extends IPosition, IVariants<SizeTypes, IconTypes, IconFamily> {
+  backgroundColor: string;
   color: string;
   name: string;
   style?: any;
@@ -13,13 +14,26 @@ export interface IconState {
   iconSize: number;
 }
 
-export type IconTypes = 'circle' | 'normal' | 'square';
+export type IconTypes = 'normal' | 'square';
 
 export enum IconTypesEnum {
-  CIRCLE = 'circle',
   NORMAL = 'normal',
   SQUARE = 'square',
 }
+
+export const IconTypeValue = {
+  [IconTypesEnum.NORMAL]: {
+    container: () => ({})
+  },
+  [IconTypesEnum.SQUARE]: {
+    container: (size: number, color: string) => ({
+      backgroundColor: color,
+      borderRadius: 4,
+      paddingHorizontal: size / 2.2,
+      paddingVertical: size / 2,
+    })
+  }
+};
 
 export type IconFamily =
   'AntDesign' | 'Entypo' |

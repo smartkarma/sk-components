@@ -1,6 +1,6 @@
 {
   "name": "sk-components",
-  "version": "0.0.35",
+  "version": "0.0.37",
   "description": "Smartkarma UI Kit",
   "main": "build/index.js",
   "types": "build/index.d.ts",

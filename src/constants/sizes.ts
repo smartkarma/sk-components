@@ -9,12 +9,12 @@ export enum SizeTypesEnum {
 }
 
 export const SizeTypesValue = {
-  [SizeTypesEnum.TINY]: 12.57142864,
-  [SizeTypesEnum.MINI]: 13.71428576,
-  [SizeTypesEnum.SMALL]: 16,
-  [SizeTypesEnum.LARGE]: 18.28571424,
-  [SizeTypesEnum.HUGE]: 22.85714288,
-  [SizeTypesEnum.MASSIVE]: 27.42857136,
+  [SizeTypesEnum.TINY]: 11,
+  [SizeTypesEnum.MINI]: 13,
+  [SizeTypesEnum.SMALL]: 15,
+  [SizeTypesEnum.LARGE]: 18,
+  [SizeTypesEnum.HUGE]: 22,
+  [SizeTypesEnum.MASSIVE]: 27,
 };
 
 export const IconSizeTypesValue = {

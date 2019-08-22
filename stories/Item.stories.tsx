@@ -11,7 +11,11 @@ stories.add('Item', () => (
       description='This component allows you to use Item component with various types.'
     />
     <Info description='A standard item.'>
-      <Item />
+      <Item
+        metadata='20 Aug 2019 17:53'
+        subtitle='Thematic & Strategy / Technology'
+        title='John Doe'
+      />
     </Info>
   </>
 ));

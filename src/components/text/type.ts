@@ -10,6 +10,8 @@ export interface TextProps extends IPosition, IVariants<SizeTypes, null, FontFam
   colorTint: string;
   disabled: boolean;
   hoverable?: boolean;
+  lineHeight?: number;
+  numberOfLines?: number;
   onLongPress?: () => void;
   onPress?: () => void;
   style?: ViewStyle;

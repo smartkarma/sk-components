@@ -79,6 +79,8 @@ export default class Text extends React.Component<TextProps, TextState> {
   render() {
     const {
       children,
+      lineHeight,
+      numberOfLines,
       onLongPress,
       onPress,
       style,
@@ -94,15 +96,13 @@ export default class Text extends React.Component<TextProps, TextState> {
     return (
       <Animated.Text
         ref={(ref) => this.rootComponent = ref}
+        numberOfLines={numberOfLines}
         onMouseEnter={onlyWeb(this.onMouseEnter)}
         onMouseLeave={onlyWeb(this.onMouseLeave)}
         onPress={onPress}
         onLongPress={onLongPress}
         style={[
-          { alignSelf },
-          { color },
-          { fontFamily },
-          { fontSize },
+          { alignSelf, color, fontFamily, fontSize, lineHeight: lineHeight || fontSize * 1.5  },
           style
         ]}
       >

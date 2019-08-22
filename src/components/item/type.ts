@@ -8,7 +8,10 @@ export interface ItemProps {
   style?: ViewStyle;
   iconName?: string;
   iconFamily?: IconFamily;
-  iconSize?: SizeTypes
+  iconSize?: SizeTypes;
+  metadata: React.ReactElement | string;
+  subtitle: string;
+  title: string;
 }
 
 export interface ItemState {

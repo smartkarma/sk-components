@@ -2,7 +2,6 @@ import { ViewStyle } from 'react-native';
 import { IPosition, IVariants } from '../../constants/general';
 import { SizeTypes } from '../../constants/sizes';
 
-// Button
 export interface ButtonProps extends IPosition, IVariants<SizeTypes, ButtonTypes, null> {
   componentId?: string;
   color?: string;
@@ -15,7 +14,6 @@ export interface ButtonProps extends IPosition, IVariants<SizeTypes, ButtonTypes
   textColor?: string;
   textWeight?: number;
 }
-
 export interface ButtonState {
   alignSelf: string;
   backgroundColorClicked: string;
@@ -26,17 +24,19 @@ export interface ButtonState {
 }
 
 export type ButtonTypes = 'compact' | 'normal';
-export type ButtonGroupTypes = 'horizontal' | 'vertical';
-
+export enum ButtonTypesEnum {
+  COMPACT = 'compact',
+  NORMAL = 'normal'
+}
 export const ButtonTypeValue = {
-  compact: {
+  [ButtonTypesEnum.COMPACT]: {
     buttonContainer: {
       minWidth: 0,
       paddingHorizontal: 10,
       paddingVertical: 5
     }
   },
-  normal: {
+  [ButtonTypesEnum.NORMAL]: {
     buttonContainer: {
       minWidth: 120,
       paddingHorizontal: 30,
@@ -45,17 +45,6 @@ export const ButtonTypeValue = {
   }
 };
 
-export enum ButtonTypesEnum {
-  COMPACT = 'compact',
-  NORMAL = 'normal'
-}
-
-export enum ButtonGroupTypesEnum {
-  VERTICAL = 'vertical',
-  HORIZONTAL = 'horizontal'
-}
-
-// ButtonGroup
 export interface ButtonGroupProps {
   buttonType?: ButtonTypes;
   centered?: boolean;
@@ -70,4 +59,10 @@ export interface ButtonGroupProps {
 }
 
 export interface ButtonGroupState {
+}
+
+export type ButtonGroupTypes = 'horizontal' | 'vertical';
+export enum ButtonGroupTypesEnum {
+  VERTICAL = 'vertical',
+  HORIZONTAL = 'horizontal'
 }
