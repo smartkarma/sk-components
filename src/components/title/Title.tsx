@@ -6,20 +6,23 @@ import { TitleProps, TitleState } from './type'
 
 export default class Title extends React.Component<TitleProps, TitleState> {
   static defaultProps: TitleProps = {
+    ...Text.defaultProps,
     family: FontFamilyEnum.ROBOTO,
-    size: SizeTypesEnum.SMALL,
-    type: null
+    size: SizeTypesEnum.SMALL
   };
 
   render() {
     const {
       children,
+      color,
       size
     } = this.props;
     return (
       <Text
+        {...this.props}
         weight={500} numberOfLines={1}
         size={size}
+        color={color}
       >
         {children}
       </Text>

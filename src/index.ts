@@ -4,6 +4,8 @@ import Icon from './components/icon';
 import Info from './components/info';
 import Item from './components/item';
 import Text from './components/text';
+import Title from './components/title';
+
 import {Colors, Fonts, Numbers, Sizes} from './constants';
 
 export {
@@ -16,5 +18,6 @@ export {
   Item,
   Numbers,
   Text,
+  Title,
   Sizes
 };
