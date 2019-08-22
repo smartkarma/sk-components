@@ -1,5 +1,5 @@
 import React from 'react';
-import { Animated, TouchableOpacity } from 'react-native';
+import { Animated } from 'react-native';
 import { Colors, Fonts, Sizes } from '../../constants';
 import { HOVERING_DURATION } from '../../constants/numbers';
 import { onlyWeb } from '../../utils/helper';
@@ -14,6 +14,8 @@ export default class Text extends React.Component<Types.TextProps, Types.TextSta
     colorTint: Colors.SECONDARY_TINT,
     disabled: false,
     hoverable: false,
+    onLongPress: undefined,
+    onPress: undefined,
     rightAligned: false,
     size: Sizes.TypesEnum.SMALL,
     tint: false,
@@ -74,6 +76,7 @@ export default class Text extends React.Component<Types.TextProps, Types.TextSta
   render() {
     const {
       children,
+      onLongPress,
       onPress,
       style,
     } = this.props;
@@ -86,22 +89,22 @@ export default class Text extends React.Component<Types.TextProps, Types.TextSta
     } = this.state;
 
     return (
-      <TouchableOpacity activeOpacity={1} onPress={onPress}>
-        <Animated.Text
-          ref={component => this.rootComponent = component}
-          onMouseEnter={onlyWeb(this.onMouseEnter)}
-          onMouseLeave={onlyWeb(this.onMouseLeave)}
-          style={[
-            { alignSelf },
-            { color },
-            { fontFamily },
-            { fontSize },
-            style
-          ]}
-        >
-          {children}
-        </Animated.Text>
-      </TouchableOpacity>
+      <Animated.Text
+        ref={(ref) => this.rootComponent = ref}
+        onMouseEnter={onlyWeb(this.onMouseEnter)}
+        onMouseLeave={onlyWeb(this.onMouseLeave)}
+        onPress={onPress}
+        onLongPress={onLongPress}
+        style={[
+          { alignSelf },
+          { color },
+          { fontFamily },
+          { fontSize },
+          style
+        ]}
+      >
+        {children}
+      </Animated.Text>
     );
   }
 }

@@ -7,12 +7,13 @@ export interface TextProps extends IPosition, IVariants<Sizes.Types, Fonts.Famil
   color: string;
   colorHover: string;
   colorTint: string;
-  disabled?: boolean;
+  disabled: boolean;
   hoverable?: boolean;
+  onLongPress?: () => void;
+  onPress?: () => void;
   style?: ViewStyle;
   tint?: boolean;
   weight: number;
-  onPress?: () => void;
 }
 
 export interface TextState {
