@@ -16,3 +16,12 @@ export const TypesValue = {
   [TypesEnum.HUGE]: 22.85714288,
   [TypesEnum.MASSIVE]: 27.42857136,
 };
+
+export const IconTypesValue = {
+  [TypesEnum.TINY]: 10,
+  [TypesEnum.MINI]: 15,
+  [TypesEnum.SMALL]: 20,
+  [TypesEnum.LARGE]: 30,
+  [TypesEnum.HUGE]: 40,
+  [TypesEnum.MASSIVE]: 50,
+};

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Colors } from '../../constants';
+import { Colors, Sizes } from '../../constants';
 import { Icons } from '../../constants';
 import { getGeneralPosition } from '../../utils/position';
 import * as Types from './type';
@@ -8,8 +8,9 @@ import * as Types from './type';
 export default class Icon extends React.Component<Types.IconProps, Types.IconState> {
   static defaultProps: Types.IconProps = {
     centered: false,
-    color: Colors.WHITE,
+    color: Colors.PRIMARY,
     fluid: false,
+    name: 'diamond',
     rightAligned: false,
     size: 'small',
     type: Types.TypesEnum.FONT_AWESOME
@@ -20,26 +21,35 @@ export default class Icon extends React.Component<Types.IconProps, Types.IconSta
     const {
       centered,
       fluid,
-      rightAligned
+      rightAligned,
+      size,
+      type
     } = props;
+
+    const CurrentIcon = Icons.Family[type];
 
     // Position
     const alignSelf: any = getGeneralPosition({ centered, fluid, rightAligned });
-
+    const iconSize: number = Sizes.IconTypesValue[size];
     this.state = {
-      alignSelf
+      CurrentIcon,
+      alignSelf,
+      iconSize
     };
   }
 
   render() {
     const {
+      color,
+      name,
       style,
-      type
     } = this.props;
     const {
-      alignSelf
+      CurrentIcon,
+      alignSelf,
+      iconSize,
     } = this.state;
-    const CurrentIcon = Icons.Family[type];
+
     return (
       <View
         style={[
@@ -50,7 +60,7 @@ export default class Icon extends React.Component<Types.IconProps, Types.IconSta
           style
         ]}
       >
-        <CurrentIcon name='rocket' size={30} color='#900'/>
+        <CurrentIcon name={name} size={iconSize} color={color}/>
       </View>
     );
   }

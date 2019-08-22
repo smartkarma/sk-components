@@ -3,11 +3,14 @@ import { IPosition, IVariants } from '../../constants/general';
 
 export interface IconProps extends IPosition, IVariants<Sizes.Types, TypesEnum> {
   color: string;
+  name: string;
   style?: any;
 }
 
 export interface IconState {
+  CurrentIcon: any;
   alignSelf: string;
+  iconSize: number;
 }
 
 export enum TypesEnum {
