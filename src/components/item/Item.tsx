@@ -12,7 +12,7 @@ export default class Item extends React.Component<ItemProps, ItemState> {
 
   render() {
     const {
-      Icon: IconEl,
+      Thumbnail,
       metadata,
       subtitle,
       title,
@@ -20,8 +20,8 @@ export default class Item extends React.Component<ItemProps, ItemState> {
     return (
       <View style={[styles.container]}>
         {
-          IconEl
-            ? IconEl
+          React.isValidElement(Thumbnail)
+            ? Thumbnail
             : <Icon size={SizeTypesEnum.LARGE} type={IconTypesEnum.SQUARE} />
         }
         <View style={[styles.captionContainer]}>
