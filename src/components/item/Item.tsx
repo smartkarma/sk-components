@@ -38,7 +38,7 @@ export default class Item extends React.Component<ItemProps, ItemState> {
           {
             React.isValidElement(subtitle)
               ? subtitle
-              : <Text color={Colors.GREY_GREY} size={SizeTypesEnum.MINI} numberOfLines={1}>{subtitle}</Text>
+              : <Title.Subtitle>{subtitle}</Title.Subtitle>
           }
           {
             React.isValidElement(metadata)

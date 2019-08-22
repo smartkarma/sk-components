@@ -1,18 +1,17 @@
 import React from 'react';
+import { Colors } from '../../constants';
 import { FontFamilyEnum } from '../../constants/fonts';
 import { SizeTypesEnum } from '../../constants/sizes';
 import Text from '../text';
-import Subtitle from './Subtitle';
 import { TitleProps, TitleState } from './type'
 
-export default class Title extends React.Component<TitleProps, TitleState> {
+export default class Subtitle extends React.Component<TitleProps, TitleState> {
   static defaultProps: TitleProps = {
     ...Text.defaultProps,
+    color: Colors.GREY_GREY,
     family: FontFamilyEnum.ROBOTO,
-    size: SizeTypesEnum.SMALL
+    size: SizeTypesEnum.MINI
   };
-
-  public static Subtitle = Subtitle;
 
   render() {
     const {
@@ -23,7 +22,7 @@ export default class Title extends React.Component<TitleProps, TitleState> {
     return (
       <Text
         {...this.props}
-        weight={500} numberOfLines={1}
+        numberOfLines={1}
         size={size}
         color={color}
       >
