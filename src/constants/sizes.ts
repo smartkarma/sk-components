@@ -8,7 +8,7 @@ export enum SizeTypesEnum {
   MASSIVE = 'massive',
 }
 
-export const SizeTypesValue = {
+export const FontSizeTypesValue = {
   [SizeTypesEnum.TINY]: 11,
   [SizeTypesEnum.MINI]: 13,
   [SizeTypesEnum.SMALL]: 15,

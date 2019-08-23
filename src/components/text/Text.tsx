@@ -4,7 +4,7 @@ import { Animated } from 'react-native';
 import { Colors } from '../../constants';
 import { FontFamilyEnum, FontFamilyWeightEnum } from '../../constants/fonts';
 import { HOVERING_DURATION, TEXT_TO_DARKER } from '../../constants/numbers';
-import { SizeTypesEnum, SizeTypesValue } from '../../constants/sizes';
+import { FontSizeTypesValue, SizeTypesEnum } from '../../constants/sizes';
 import { onlyWeb } from '../../utils/helper';
 import { getGeneralPosition } from '../../utils/position';
 import { TextProps, TextState } from './type';
@@ -52,7 +52,7 @@ export default class Text extends React.Component<TextProps, TextState> {
       alignSelf: getGeneralPosition({centered, rightAligned}),
       color: disabled ? Colors.INACTIVE_GREY : hoverable ? hoveringColor : textColor,
       fontFamily: `${family}${FontFamilyWeightEnum[weight]}`,
-      fontSize: SizeTypesValue[size],
+      fontSize: FontSizeTypesValue[size],
     }
   }
 

@@ -1,6 +1,7 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { Info, Item, Text, Title } from '../src';
+import { Colors, Info, Item, Text, Title } from '../src';
 
 const stories = storiesOf('Components', module);
 
@@ -15,12 +16,27 @@ stories.add('Item', () => (
         metadata='20 Aug 2019 17:53'
         subtitle={
           <Text>
-            <Title.Subtitle hoverable>Equity Bottom-Up</Title.Subtitle>
+            <Title.Subtitle hoverable>IPOs & Placements</Title.Subtitle>
             <Title.Subtitle> / </Title.Subtitle>
-            <Title.Subtitle hoverable>Daniel Tabbush</Title.Subtitle>
+            <Title.Subtitle hoverable>John Doe</Title.Subtitle>
           </Text>
         }
-        title='John Doe'
+        title={
+          <Title hoverable color={Colors.BEARISH_RED}>Topsports International</Title>
+        }
+      />
+      <Item
+        metadata='20 Aug 2019 17:53'
+        subtitle={
+          <Text>
+            <Title.Subtitle hoverable>IPOs & Placements</Title.Subtitle>
+            <Title.Subtitle> / </Title.Subtitle>
+            <Title.Subtitle hoverable>John Doe</Title.Subtitle>
+          </Text>
+        }
+        title={
+          <Title onPress={() => action('Title pressed')} hoverable color={Colors.BULLISH_GREEN}>Soilbuild Business Space Reit</Title>
+        }
       />
     </Info>
   </>

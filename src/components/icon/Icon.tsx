@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { Colors } from '../../constants';
 import { Icons } from '../../constants';
-import { IconSizeTypesValue } from '../../constants/sizes';
+import { IconSizeTypesValue, SizeTypesEnum } from '../../constants/sizes';
 import { getGeneralPosition } from '../../utils/position';
 import { IconFamilyEnum, IconProps, IconState, IconTypes, IconTypesEnum, IconTypeValue } from './type';
 
@@ -15,7 +15,7 @@ export default class Icon extends React.Component<IconProps, IconState> {
     fluid: false,
     name: 'diamond',
     rightAligned: false,
-    size: 'small',
+    size: SizeTypesEnum.SMALL,
     type: IconTypesEnum.NORMAL
   };
 
